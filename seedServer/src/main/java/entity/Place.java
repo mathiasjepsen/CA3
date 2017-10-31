@@ -28,7 +28,7 @@ public class Place implements Serializable {
     private HashMap<User, Double> ratings;
 
     private List<String> images;
-
+    
     public Place() {
         this.ratings = new HashMap();
     }
