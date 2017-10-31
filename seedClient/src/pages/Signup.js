@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import userFacade from '../facades/userFacade'
 // import auth from "../authorization/auth"; should write our own signup, fetch with push
 
 class Signup extends Component {
@@ -16,7 +16,8 @@ class Signup extends Component {
     const email = this.state.user.email;
     const phone = this.state.user.phone;
     const pass = this.state.user.password;
-    console.log( "state user", this.state.user)
+    userFacade.signUp(this.state.user);
+    console.log("user: " +this.state.user);
 
     // auth.login(user, pass, (err, loggedIn) => {
     //   if (err) {

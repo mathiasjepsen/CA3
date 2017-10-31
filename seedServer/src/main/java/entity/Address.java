@@ -22,7 +22,7 @@ public class Address implements Serializable {
     private String street;
     @Column(name = "GPS_LOCATION", nullable = true)
     private String location;
-
+    
     public Address() {
     }
 

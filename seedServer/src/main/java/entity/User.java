@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,11 +25,21 @@ public class User implements IUser, Serializable {
     private String fName;
     private String lName;
     private String phone;
+    private String email;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     List<Role> roles;
 
     public User() {
+    }
+
+    public User(String username, String password, String fName, String lName, String phone, String email) throws PasswordStorage.CannotPerformOperationException {
+        this.userName = username;
+        this.passwordHash = PasswordStorage.createHash(password);
+        this.fName = fName;
+        this.lName = lName;
+        this.phone = phone;
+        this.email = email;
     }
 
     public User(String userName, String password) throws PasswordStorage.CannotPerformOperationException {
@@ -84,6 +95,10 @@ public class User implements IUser, Serializable {
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
 }
