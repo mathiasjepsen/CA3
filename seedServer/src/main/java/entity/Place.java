@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,10 +32,15 @@ public class Place implements Serializable {
     
     private String description;
     
-    @OneToOne
-    private Rating rating;
+    private HashMap<User, Double> ratings;
     
     private List<String> images;
+
+    public Place() {
+        this.ratings = new HashMap<User, Double> ();
+    }
+    
+    
     
     @Override
     public int hashCode() {
