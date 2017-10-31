@@ -32,7 +32,7 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
-    
+
     @Override
     public IUser register(User user) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
