@@ -49,23 +49,23 @@ public class DeploymentConfiguration implements ServletContextListener {
         }
         ServletContext context = sce.getServletContext();
 
-            UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
-                        
-            try {
-                
-                IUser unregisteredUser = new User("lovro", "test", "lovro", "lovrovro", "32423432", "oinoin");
-                IUser unregisteredAdmin = new User("admin", "1234");
-                Role userRole = new Role("User");
-                Role adminRole = new Role("Admin");
-                unregisteredUser.addRole(userRole);
-                unregisteredAdmin.addRole(adminRole);
-                IUser user = uf.registerUser(unregisteredUser, userRole);
-                IUser admin = uf.registerAdmin(unregisteredAdmin, adminRole);                
-                
-            } catch (PasswordStorage.CannotPerformOperationException ex) {
-                Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-        
+        UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
+
+        try {
+
+            IUser unregisteredUser = new User("lovro", "test", "lovro", "lovrovro", "32423432", "oinoin");
+            IUser unregisteredAdmin = new User("admin", "1234");
+            Role userRole = new Role("User");
+            Role adminRole = new Role("Admin");
+            unregisteredUser.addRole(userRole);
+            unregisteredAdmin.addRole(adminRole);
+            IUser user = uf.registerUser(unregisteredUser, userRole);
+            IUser admin = uf.registerAdmin(unregisteredAdmin, adminRole);
+
+        } catch (PasswordStorage.CannotPerformOperationException ex) {
+            Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override

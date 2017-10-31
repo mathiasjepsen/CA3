@@ -17,6 +17,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import rest.JSON.JSONUser;
 import security.IUser;
+import security.PasswordStorage;
 
 @Path("admin")
 @RolesAllowed("Admin")
@@ -51,7 +52,7 @@ public class Admin {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String editUser(String content) {
+    public String editUser(String content) throws PasswordStorage.CannotPerformOperationException {
         JSONUser user = af.editUser(gson.fromJson(content, entity.User.class));
         return gson.toJson(user);
     }
