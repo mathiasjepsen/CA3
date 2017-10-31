@@ -6,6 +6,7 @@ import About from "./About";
 import UserPage from "./UserPage";
 import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
+import Signup from "./Signup";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/user" component={UserPage} />
         <Route path="/admin" component={AdminPage} />
+        <Route path="/signup" component={Signup} />
       </Switch>
     </div>
   )
