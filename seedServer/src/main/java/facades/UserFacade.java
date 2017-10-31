@@ -34,11 +34,11 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
-    public IUser register(User user) throws PasswordStorage.CannotPerformOperationException {
+    public IUser registerUser(IUser user, Role role) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
-            user.createPasswordHash(user.getPasswordHash());
             em.getTransaction().begin();
+            em.persist(role);
             em.persist(user);
             em.getTransaction().commit();
             return user;
@@ -48,15 +48,14 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
-    public IUser addUserRole(String username, Role role) {
+    public IUser registerAdmin(IUser admin, Role role) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            User user = em.find(User.class, username);
-            user.addRole(role);
-            em.persist(user);
+            em.persist(role);
+            em.persist(admin);
             em.getTransaction().commit();
-            return user;
+            return admin;
         } finally {
             em.close();
         }
@@ -68,9 +67,9 @@ public class UserFacade implements IUserFacade {
     @Override
     public List<String> authenticateUser(String userName, String password) {
         try {
-            System.out.println("User Before:" + userName + ", " + password);
+            System.out.println("User before: " + userName + " " +password);
             IUser user = getUserByUserId(userName);
-            System.out.println("User After:" + user.getUserName() + ", " + user.getPasswordHash());
+            System.out.println("User after: " + userName + " " +user.getPasswordHash());
             return user != null && PasswordStorage.verifyPassword(password, user.getPasswordHash()) ? user.getRolesAsStrings() : null;
         } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
             throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);

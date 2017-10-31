@@ -1,10 +1,13 @@
 package security;
 
+import entity.Role;
 import java.util.List;
 
 public interface IUser {
 
     List<String> getRolesAsStrings();
+
+    void addRole(Role role);
 
     String getUserName();
 
@@ -17,6 +20,6 @@ public interface IUser {
     String getPhone();
 
     String getEmail();
-    
+
     void createPasswordHash(String password) throws PasswordStorage.CannotPerformOperationException;
 }

@@ -2,11 +2,10 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entity.Role;
 import facades.UserFacade;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -37,7 +36,7 @@ public class All {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String register(String content) throws PasswordStorage.CannotPerformOperationException {
-        IUser user = uf.register(gson.fromJson(content, entity.User.class));
+        IUser user = uf.registerUser(gson.fromJson(content, entity.User.class), new Role("User"));
         JSONUser jsonUser = new JSONUser(user);
         return gson.toJson(jsonUser);
     }
