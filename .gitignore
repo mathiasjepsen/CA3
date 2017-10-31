@@ -15,3 +15,11 @@ buildNumber.properties
 derby.log
 
 nb-configuration.xml
+
+*.so
+*.log
+*.out
+*~
+*.swp
+*.DS_Store
+*.lock
