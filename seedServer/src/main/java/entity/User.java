@@ -10,16 +10,20 @@ import javax.persistence.ManyToMany;
 import security.IUser;
 import security.PasswordStorage;
 
-@Entity(name = "SEED_USER")
+@Entity(name = "USER")
 public class User implements IUser, Serializable {
+
+    @Id
+    @Column(length = 35, name = "USERNAME", nullable = false)
+    private String userName;
 
     //You will need to change this to save a Hashed/salted password 
     @Column(length = 255, name = "PASSWORD_HASH", nullable = false)
     private String passwordHash;
-
-    @Id
-    @Column(length = 35, name = "USER_NAME", nullable = false)
-    private String userName;
+    
+    private String fName;
+    private String lName;
+    private String phone;
 
     @ManyToMany
     List<Role> roles;
@@ -68,6 +72,18 @@ public class User implements IUser, Serializable {
     @Override
     public String getUserName() {
         return userName;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
 }
