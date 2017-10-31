@@ -1,11 +1,11 @@
 package deploy;
 
+import entity.Address;
 import entity.Role;
 import entity.User;
 import facades.UserFacade;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 import java.util.Properties;
 
 import java.util.logging.Level;
