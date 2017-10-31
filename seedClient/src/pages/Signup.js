@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import userFacade from '../facades/userFacade'
 // import auth from "../authorization/auth"; should write our own signup, fetch with push
 
 class Signup extends Component {
@@ -16,7 +16,8 @@ class Signup extends Component {
     const email = this.state.user.email;
     const phone = this.state.user.phone;
     const pass = this.state.user.password;
-    console.log( "state user", this.state.user)
+    userFacade.signUp(this.state.user);
+    console.log("user: " +this.state.user);
 
     // auth.login(user, pass, (err, loggedIn) => {
     //   if (err) {
@@ -52,7 +53,7 @@ class Signup extends Component {
           <input type="text" value={this.state.user.phone} onChange={this.onChange} className="form-control" id="phone" placeholder="Phone" required autoFocus />
           <label htmlFor="inputPassword" className="sr-only">Password</label>
           <input type="password" value={this.state.user.password} onChange={this.onChange} className="form-control" id="password" placeholder="Password" required />
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
           <br />
         </form>
         { this.state.err && ( 
