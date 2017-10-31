@@ -52,7 +52,7 @@ class Signup extends Component {
           <input type="text" value={this.state.user.phone} onChange={this.onChange} className="form-control" id="phone" placeholder="Phone" required autoFocus />
           <label htmlFor="inputPassword" className="sr-only">Password</label>
           <input type="password" value={this.state.user.password} onChange={this.onChange} className="form-control" id="password" placeholder="Password" required />
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
           <br />
         </form>
         { this.state.err && ( 
