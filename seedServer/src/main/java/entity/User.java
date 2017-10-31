@@ -75,8 +75,9 @@ public class User implements IUser, Serializable {
     public String getPasswordHash() {
         return passwordHash;
     }
-
-    public void setPassword(String password) throws PasswordStorage.CannotPerformOperationException {
+    
+    @Override
+    public void createPasswordHash(String password) throws PasswordStorage.CannotPerformOperationException {
         this.passwordHash = PasswordStorage.createHash(password);
     }
 
@@ -85,20 +86,25 @@ public class User implements IUser, Serializable {
         return userName;
     }
 
+    @Override
     public String getfName() {
         return fName;
     }
 
+    @Override
     public String getlName() {
         return lName;
     }
 
+    @Override
     public String getPhone() {
         return phone;
     }
 
+    @Override
     public String getEmail() {
         return email;
     }
+
 
 }

@@ -9,6 +9,14 @@ public interface IUser {
     String getUserName();
 
     String getPasswordHash();
+
+    String getfName();
+
+    String getlName();
+
+    String getPhone();
+
+    String getEmail();
     
-    
+    void createPasswordHash(String password) throws PasswordStorage.CannotPerformOperationException;
 }

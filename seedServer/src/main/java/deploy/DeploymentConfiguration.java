@@ -1,8 +1,6 @@
 package deploy;
 
-import entity.Address;
 import entity.Role;
-import entity.User;
 import facades.UserFacade;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,12 +8,12 @@ import java.util.Properties;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import security.IUser;
 import security.PasswordStorage;
 import security.Secret;
 
@@ -49,14 +47,14 @@ public class DeploymentConfiguration implements ServletContextListener {
         }
         ServletContext context = sce.getServletContext();
 
-            UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
-            try {
-                User user = uf.register("lovro", "test", "lovro", "lovrovro", "32423432", "oinoin");
-                Role userRole = new Role("user");
-                uf.addUserRole(user.getUserName(), userRole);
-            } catch (PasswordStorage.CannotPerformOperationException ex) {
-                Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+//            UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
+//            try {
+//                IUser user = uf.register("lovro", "test", "lovro", "lovrovro", "32423432", "oinoin");
+//                Role userRole = new Role("user");
+//                uf.addUserRole(user.getUserName(), userRole);
+//            } catch (PasswordStorage.CannotPerformOperationException ex) {
+//                Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
+//            } 
         
     }
 
