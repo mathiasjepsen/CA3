@@ -7,6 +7,7 @@ import UserPage from "./UserPage";
 import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
 import Signup from "./Signup";
+import Places from "./Places";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/user" component={UserPage} />
         <Route path="/admin" component={AdminPage} />
         <Route path="/signup" component={Signup} />
+        <Route path="/places" component={Places}/>
       </Switch>
     </div>
   )
