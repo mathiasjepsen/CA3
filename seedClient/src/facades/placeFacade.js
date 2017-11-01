@@ -10,9 +10,9 @@ class placeFacade {
 }
 
 function compareRating(a,b) {
-    if (parseInt(a.rating) < parseInt(b.rating))
-      return -1;
     if (parseInt(a.rating) > parseInt(b.rating))
+      return -1;
+    if (parseInt(a.rating) < parseInt(b.rating))
       return 1;
     return 0;
   }
