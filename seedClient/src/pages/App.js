@@ -8,6 +8,7 @@ import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
 import Signup from "./Signup";
 import Places from "./Places";
+import Upload from "./Upload";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin" component={AdminPage} />
         <Route path="/signup" component={Signup} />
         <Route path="/places" component={Places}/>
+        <Route path="/upload" component={Upload}/>
       </Switch>
     </div>
   )
