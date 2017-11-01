@@ -21,5 +21,7 @@ public interface IUser {
 
     String getEmail();
 
+    List<Role> getRoles();
+
     void createPasswordHash(String password) throws PasswordStorage.CannotPerformOperationException;
 }

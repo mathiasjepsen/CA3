@@ -9,8 +9,8 @@ class AdminStore {
         this._users = ""
     }
 
-    setUserObserver = (handler) => {
-        this._userHandler = handler
+    setUsersObserver = (handler) => {
+        this._usersHandler = handler
     }
 
     getData = (cb) => {
@@ -40,28 +40,29 @@ class AdminStore {
             .then((res) => res.json())
             .then((users) => {
                 this._users = users
-                if (this._userHandler) {
-                    this._userHandler(users)
+                if (this._usersHandler) {
+                    this._usersHandler(users)
                 }
             })
     }
 
     addUser = (user) => {
-        const options = fetchHelper.makeOptions("POST", true); 
+        const options = fetchHelper.makeOptions("POST", true);
         fetch(URL + "api/admin/user", {
-            method: 'PUT',
+            method: 'POST',
             headers: options.headers,
             body: JSON.stringify({
                 userName: user.username,
-                passwordHash: user.passwordHash,
+                passwordHash: user.password,
                 fName: user.fName,
                 lName: user.lName,
                 phone: user.phone,
-                email: user.email
+                email: user.email,
+                roles: [{ roleName: user.roles[0] }]
             })
         }).then(() => {
             this.getAllUsers()
-        })       
+        })
     }
 
     deleteUser = (username) => {
@@ -75,17 +76,18 @@ class AdminStore {
     }
 
     editUser = (user) => {
-        const options = fetchHelper.makeOptions("PUT", true);        
+        const options = fetchHelper.makeOptions("PUT", true);
         fetch(URL + "api/admin", {
             method: 'PUT',
             headers: options.headers,
             body: JSON.stringify({
                 userName: user.username,
-                passwordHash: user.passwordHash,
+                passwordHash: user.password,
                 fName: user.fName,
                 lName: user.lName,
                 phone: user.phone,
-                email: user.email
+                email: user.email,
+                roles: [{ roleName: user.roles[0] }]
             })
         }).then(() => {
             this.getAllUsers()

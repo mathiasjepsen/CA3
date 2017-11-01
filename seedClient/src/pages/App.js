@@ -7,7 +7,7 @@ import UserPage from "./UserPage";
 import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
 import Signup from "./Signup";
-import AllUsers from './AllUsers'
+import AllUsers from './admin/AllUsers'
 import Places from "./Places";
 
 

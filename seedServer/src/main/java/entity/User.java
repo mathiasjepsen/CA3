@@ -27,7 +27,7 @@ public class User implements IUser, Serializable {
     private String phone;
     private String email;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     List<Role> roles;
 
     public User() {
@@ -133,6 +133,8 @@ public class User implements IUser, Serializable {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+    
+    
     
     
 

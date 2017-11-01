@@ -59,18 +59,26 @@ public class DeploymentConfiguration implements ServletContextListener {
         try {
             em.getTransaction().begin();
             Address address = new Address("wegf", "wjfuaiw", "hwfha", "124312");
-            User user = new User("mathias", "1234");
+            User user1 = new User("mathias", "1234", "Mathias", "Jepsen", "123325234", "mathias@wpsnet.com");
+            User user2 = new User("thomas", "1234", "Thomas", "Thimothee", "23442635", "thomas@thom.com");
+            User admin = new User("admin", "1234");
             Role role = new Role("User");
-            user.addRole(role);
+            Role adminRole = new Role("Admin");
+            user1.addRole(role);
+            user2.addRole(role);
+            admin.addRole(adminRole);
             HashMap<String, Double> rating = new HashMap();
-            rating.put(user.getUserName(), 2.0);
+            rating.put(user1.getUserName(), 2.0);
             List<String> images = new ArrayList();
             images.add("fwafwaw");
             Place place = new Place(address, "hfhw", rating, images);
             em.persist(address);
             em.persist(place);
-            em.persist(user);
+            em.persist(user1);
+            em.persist(user2);
+            em.persist(admin);
             em.persist(role);
+            em.persist(adminRole);
             em.getTransaction().commit();
         } catch (PasswordStorage.CannotPerformOperationException ex) {
             Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
