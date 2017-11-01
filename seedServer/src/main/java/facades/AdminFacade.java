@@ -61,6 +61,7 @@ public class AdminFacade implements IAdminFacade {
             oldUser.setlName(editedUser.getlName());
             oldUser.setEmail(editedUser.getEmail());
             oldUser.setPhone(editedUser.getPhone());
+            oldUser.setRoles(editedUser.getRoles());
             em.getTransaction().commit();
             JSONUser newUser = new JSONUser(oldUser);
             return newUser;
