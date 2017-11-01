@@ -29,7 +29,6 @@ public class All {
     @Path("places")
     @Produces(MediaType.APPLICATION_JSON)
     public String getPlaces() {
-        System.out.println("get all places");
         List<JSONPlace> jsonPlace = new ArrayList();
         List<Place> places = uf.getAllPlaces();
         for (Place place : places) {
