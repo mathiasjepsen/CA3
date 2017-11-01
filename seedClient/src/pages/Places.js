@@ -48,14 +48,13 @@ export default class Places extends React.Component {
                             <th>Location</th>
                             <th>Description</th>
                             <th>Rating</th>
-                            <button onclick={this.sortByRating}>Sort by rating</button>
-                            <button onclick={this.sortByCity}>Sort by City</button>
-                            <button onclick={this.sortByZip}>Sort by Zip</button>
+                            <th><button onClick={this.sortByRating}>Sort by rating</button></th>
+                            <th><button onClick={this.sortByCity}>Sort by City</button></th>
+                            <th><button onClick={this.sortByZip}>Sort by Zip</button></th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.places.map((place, index) => {
-                            console.log("Place ", place)
                             return (
                                 <tr key={index}>
                                     <td>

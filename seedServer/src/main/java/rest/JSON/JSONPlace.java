@@ -16,12 +16,12 @@ import java.util.List;
  * @author Lovro
  */
 public class JSONPlace {
+
     private Address address;
     private String description;
     private List<String> images;
     private HashMap<String, Double> ratings;
     private int rating;
-    
 
     public JSONPlace(Place place) {
         this.address = place.getAddress();
@@ -30,15 +30,15 @@ public class JSONPlace {
         this.ratings = place.getRatings();
         this.rating = calculateRating();
     }
-    
-    private int calculateRating(){
-        int sum=0;
-        int count=0;
-        for (Double value : ratings.values()){
-             sum +=value;
+
+    private int calculateRating() {
+        int sum = 0;
+        int count = 0;
+        for (Double value : ratings.values()) {
+            sum += value;
             count++;
         }
-        return sum/count;
+        return sum / count;
     }
 
     public Address getAddress() {
@@ -60,6 +60,5 @@ public class JSONPlace {
     public int getRating() {
         return rating;
     }
-    
-    
+
 }
