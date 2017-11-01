@@ -12,8 +12,6 @@ const AddUser = (props) => {
             roles: props.roles
         }
 
-        console.log("passowrd in adduser", props.password)
-
         props.handleSubmit(user)
         e.preventDefault()
     }
