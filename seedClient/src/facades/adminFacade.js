@@ -6,6 +6,7 @@ class AdminStore {
     constructor() {
         this._data = "";
         this._errorMessage = "";
+        this._users = ""
     }
 
     setUserObserver = (handler) => {
@@ -38,18 +39,54 @@ class AdminStore {
         fetch(URL + "api/admin/allUsers", options)
             .then((res) => res.json())
             .then((users) => {
+                this._users = users
                 if (this._userHandler) {
                     this._userHandler(users)
                 }
             })
     }
 
+    addUser = (user) => {
+        const options = fetchHelper.makeOptions("POST", true); 
+        fetch(URL + "api/admin/user", {
+            method: 'PUT',
+            headers: options.headers,
+            body: JSON.stringify({
+                userName: user.username,
+                passwordHash: user.passwordHash,
+                fName: user.fName,
+                lName: user.lName,
+                phone: user.phone,
+                email: user.email
+            })
+        }).then(() => {
+            this.getAllUsers()
+        })       
+    }
+
     deleteUser = (username) => {
         const options = fetchHelper.makeOptions("DELETE", true);
-        console.log("options", options)
         fetch(URL + "api/admin/" + username, {
             method: 'DELETE',
             headers: options.headers
+        }).then(() => {
+            this.getAllUsers()
+        })
+    }
+
+    editUser = (user) => {
+        const options = fetchHelper.makeOptions("PUT", true);        
+        fetch(URL + "api/admin", {
+            method: 'PUT',
+            headers: options.headers,
+            body: JSON.stringify({
+                userName: user.username,
+                passwordHash: user.passwordHash,
+                fName: user.fName,
+                lName: user.lName,
+                phone: user.phone,
+                email: user.email
+            })
         }).then(() => {
             this.getAllUsers()
         })

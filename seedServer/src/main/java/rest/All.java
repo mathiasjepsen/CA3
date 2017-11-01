@@ -26,12 +26,6 @@ public class All {
     UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getSomething() {
-        return "{\"message\" : \"Hello User from Server (Accesible by only authenticated USERS)\"}";
-    }
-
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
