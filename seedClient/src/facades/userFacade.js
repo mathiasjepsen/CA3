@@ -46,6 +46,16 @@ class UserStore {
             })
         })
     }
+    
+    fetchPlaces = (place) => {
+      fetch(URL + 'api/all/places', {
+          method: 'GET',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          }   
+      })
+  }
 }
 
 let userStore = new UserStore();

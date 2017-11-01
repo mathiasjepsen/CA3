@@ -13,7 +13,8 @@ import javax.persistence.OneToOne;
  *
  * @author thomasthimothee
  */
-@Entity
+
+@Entity(name = "PLACE")
 public class Place implements Serializable {
     
     @Id
@@ -23,9 +24,16 @@ public class Place implements Serializable {
     @OneToOne
     private Address address;
 
+    public Place(Address address, String description, HashMap<String, Double> ratings, List<String> images) {
+        this.address = address;
+        this.description = description;
+        this.ratings = ratings;
+        this.images = images;
+    }
+
     private String description;
 
-    private HashMap<User, Double> ratings;
+    private HashMap<String, Double> ratings;
 
     private List<String> images;
     
@@ -49,7 +57,7 @@ public class Place implements Serializable {
         return description;
     }
 
-    public HashMap<User, Double> getRatings() {
+    public HashMap<String, Double> getRatings() {
         return ratings;
     }
 

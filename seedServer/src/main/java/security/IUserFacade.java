@@ -1,5 +1,6 @@
 package security;
 
+import entity.Place;
 import entity.Role;
 import entity.User;
 import java.util.List;
@@ -17,5 +18,6 @@ public interface IUserFacade {
     IUser getUserByUserId(String id);
     IUser registerUser(IUser user, Role role) throws PasswordStorage.CannotPerformOperationException;
     IUser registerAdmin(IUser admin, Role role) throws PasswordStorage.CannotPerformOperationException;
+    List<Place> getAllPlaces();
     
 }

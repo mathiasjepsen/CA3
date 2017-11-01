@@ -1,21 +1,25 @@
 package deploy;
 
+import entity.Address;
+import entity.Place;
 import entity.Role;
 import entity.User;
-import facades.AdminFacade;
 import facades.UserFacade;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import security.IUser;
 import security.PasswordStorage;
 import security.Secret;
 
@@ -51,21 +55,28 @@ public class DeploymentConfiguration implements ServletContextListener {
 
         UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
 
+        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
         try {
-
-            IUser unregisteredUser = new User("lovro", "test", "lovro", "lovrovro", "32423432", "oinoin");
-            IUser unregisteredAdmin = new User("admin", "1234");
-            Role userRole = new Role("User");
-            Role adminRole = new Role("Admin");
-            unregisteredUser.addRole(userRole);
-            unregisteredAdmin.addRole(adminRole);
-            IUser user = uf.registerUser(unregisteredUser, userRole);
-            IUser admin = uf.registerAdmin(unregisteredAdmin, adminRole);
-
+            em.getTransaction().begin();
+            Address address = new Address("wegf", "wjfuaiw", "hwfha", "124312");
+            User user = new User("mathias", "1234");
+            Role role = new Role("User");
+            user.addRole(role);
+            HashMap<String, Double> rating = new HashMap();
+            rating.put(user.getUserName(), 2.0);
+            List<String> images = new ArrayList();
+            images.add("fwafwaw");
+            Place place = new Place(address, "hfhw", rating, images);
+            em.persist(address);
+            em.persist(place);
+            em.persist(user);
+            em.persist(role);
+            em.getTransaction().commit();
         } catch (PasswordStorage.CannotPerformOperationException ex) {
             Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            em.close();
         }
-
     }
 
     @Override

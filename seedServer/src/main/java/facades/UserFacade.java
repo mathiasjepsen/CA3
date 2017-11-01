@@ -1,11 +1,13 @@
 package facades;
 
+import entity.Place;
 import entity.Role;
 import security.IUserFacade;
 import entity.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.Response;
 import security.IUser;
@@ -28,6 +30,18 @@ public class UserFacade implements IUserFacade {
         EntityManager em = getEntityManager();
         try {
             return em.find(User.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Place> getAllPlaces() {
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT p from PLACE p");
+            List<Place> places = q.getResultList();
+            return places;
         } finally {
             em.close();
         }
