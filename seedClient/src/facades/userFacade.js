@@ -52,7 +52,7 @@ class UserStore {
         })
     }
 
-    fetchPlaces = (place) => {
+    fetchPlaces = () => {
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + 'api/all/places', options) 
         .then((res) => {

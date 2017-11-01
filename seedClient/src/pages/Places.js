@@ -24,8 +24,17 @@ export default class Places extends React.Component {
         return (
             <div>
                 <h2>Beautiful places</h2>
-                <table>
+                <table className="table">
                     <thead>
+                        <tr>
+                            <th></th>
+                            <th>City</th>
+                            <th>Zip Code</th>
+                            <th>Street</th>
+                            <th>Location</th>
+                            <th>Description</th>
+                            <th>Rating</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {this.state.places.map((place, index) => {
@@ -50,7 +59,8 @@ export default class Places extends React.Component {
                                         {place.description}
                                     </td>
                                     <td>
-                                        {place.ratings}
+                                        rating goes here
+                                        {/*place.ratings*/}
                                     </td>
 
                                 </tr>
