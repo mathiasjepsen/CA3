@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import userFacade from '../facades/userFacade'
+import placeFacade from '../facades/placeFacade'
 
 export default class Places extends React.Component {
     constructor() {
@@ -11,6 +12,7 @@ export default class Places extends React.Component {
 
     componentDidMount() {
         userFacade.setPlaceObserver(this.placesUpdater)
+        placeFacade.setPlaceObserver(this.placesUpdater)
         userFacade.fetchPlaces()
     }
 
@@ -18,6 +20,18 @@ export default class Places extends React.Component {
         this.setState({
             places
         })
+    }
+
+    sortByRating = ()=>{
+        placeFacade.sortByRating(this.state.places)
+    }
+
+    sortByCity = ()=>{
+        placeFacade.sortByCity(this.state.places)
+    }
+
+    sortByZip = ()=>{
+        placeFacade.sortByZip(this.state.places)
     }
 
     render() {
@@ -34,10 +48,14 @@ export default class Places extends React.Component {
                             <th>Location</th>
                             <th>Description</th>
                             <th>Rating</th>
+                            <button onclick={this.sortByRating}>Sort by rating</button>
+                            <button onclick={this.sortByCity}>Sort by City</button>
+                            <button onclick={this.sortByZip}>Sort by Zip</button>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.places.map((place, index) => {
+                            console.log("Place ", place)
                             return (
                                 <tr key={index}>
                                     <td>
@@ -59,8 +77,7 @@ export default class Places extends React.Component {
                                         {place.description}
                                     </td>
                                     <td>
-                                        rating goes here
-                                        {/*place.ratings*/}
+                                        {place.rating}
                                     </td>
 
                                 </tr>

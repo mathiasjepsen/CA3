@@ -56,6 +56,7 @@ class UserStore {
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + 'api/all/places', options) 
         .then((res) => {
+            console.log("fetching all places")
             return res.json()
         })
         .then((places) => {

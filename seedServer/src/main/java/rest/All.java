@@ -29,10 +29,12 @@ public class All {
     @Path("places")
     @Produces(MediaType.APPLICATION_JSON)
     public String getPlaces() {
+        System.out.println("get all places");
         List<JSONPlace> jsonPlace = new ArrayList();
         List<Place> places = uf.getAllPlaces();
         for (Place place : places) {
             JSONPlace newPlace = new JSONPlace(place);
+            System.out.println("newPlace rating" + newPlace.getRating());
             jsonPlace.add(newPlace);
         }
         return gson.toJson(jsonPlace);
