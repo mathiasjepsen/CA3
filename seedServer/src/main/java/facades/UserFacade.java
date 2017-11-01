@@ -47,12 +47,11 @@ public class UserFacade implements IUserFacade {
         }
     }
 
-    @Override
-    public IUser registerUser(User user, Role role) throws PasswordStorage.CannotPerformOperationException {
+    public IUser registerUser(User user) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            Role existingRole = em.find(Role.class, role.getRoleName());
+            Role existingRole = em.find(Role.class, "User");
             user.createPasswordHash(user.getPasswordHash());
             user.addRole(existingRole);
             em.persist(user);
@@ -63,12 +62,11 @@ public class UserFacade implements IUserFacade {
         }
     }
 
-    @Override
-    public IUser registerAdmin(User admin, Role role) throws PasswordStorage.CannotPerformOperationException {
+    public IUser registerAdmin(User admin) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            Role existingRole = em.find(Role.class, role.getRoleName());
+            Role existingRole = em.find(Role.class, "Admin");
             admin.createPasswordHash(admin.getPasswordHash());
             admin.addRole(existingRole);
             em.persist(admin);

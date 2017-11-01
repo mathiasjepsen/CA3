@@ -3,7 +3,6 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,7 +26,7 @@ public class User implements IUser, Serializable {
     private String phone;
     private String email;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     List<Role> roles;
 
     public User() {

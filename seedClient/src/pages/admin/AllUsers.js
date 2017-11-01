@@ -14,8 +14,7 @@ export default class AllUsers extends Component {
             fName: "",
             lName: "",
             phone: "",
-            email: "",
-            roles: ""
+            email: ""
         }
     }
 
@@ -34,7 +33,6 @@ export default class AllUsers extends Component {
         this.setState({
             [target.name]: target.value
         })
-        console.log("password", this.state.password)
     }
 
     addUser = (user) => {
@@ -66,7 +64,6 @@ export default class AllUsers extends Component {
                                         <td>{user.lName}</td>
                                         <td>{user.phone}</td>
                                         <td>{user.email}</td>
-                                        <td>{user.roles[0]}</td>
                                         <td><Link to={`${this.props.match.url}/editUser/${user.username}`}>Edit User</Link></td>
                                     </tr>
                                 )
@@ -91,7 +88,6 @@ export default class AllUsers extends Component {
                                     lName={this.state.lName}
                                     phone={this.state.phone}
                                     email={this.state.email}
-                                    roles={this.state.roles}
                                 />
                             </div>
                         )

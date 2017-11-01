@@ -42,7 +42,7 @@ public class All {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String register(String content) throws PasswordStorage.CannotPerformOperationException {
-        IUser user = uf.registerUser(gson.fromJson(content, entity.User.class), new Role("User"));
+        IUser user = uf.registerUser(gson.fromJson(content, entity.User.class));
         JSONUser jsonUser = new JSONUser(user);
         return gson.toJson(jsonUser);
     }

@@ -57,8 +57,7 @@ class AdminStore {
                 fName: user.fName,
                 lName: user.lName,
                 phone: user.phone,
-                email: user.email,
-                roles: [{ roleName: user.roles[0] }]
+                email: user.email
             })
         }).then(() => {
             this.getAllUsers()
@@ -86,8 +85,7 @@ class AdminStore {
                 fName: user.fName,
                 lName: user.lName,
                 phone: user.phone,
-                email: user.email,
-                roles: [{ roleName: user.roles[0] }]
+                email: user.email
             })
         }).then(() => {
             this.getAllUsers()

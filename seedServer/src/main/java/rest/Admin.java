@@ -64,7 +64,6 @@ public class Admin {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String addUser(String content) throws PasswordStorage.CannotPerformOperationException {
-        System.out.println("COntent " + content);
         IUser user = af.addUser(gson.fromJson(content, entity.User.class));
         JSONUser jsonUser = new JSONUser(user);
         return gson.toJson(jsonUser);

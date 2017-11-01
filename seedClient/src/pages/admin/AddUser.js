@@ -8,8 +8,7 @@ const AddUser = (props) => {
             fName: props.fName,
             lName: props.lName,
             phone: props.phone,
-            email: props.email,
-            roles: props.roles
+            email: props.email
         }
 
         props.handleSubmit(user)
@@ -53,10 +52,6 @@ const AddUser = (props) => {
                         <input className="form-control" type="email" id="email" name="email" placeholder="Enter e-mail" value={props.email} onChange={this.onChange} />
                     </div>
                 </div>
-                <select className="selectpicker" name="roles" value={props.roles} onChange={this.onChange}>
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
-                </select>
                 <div className="form-group">
                     <div className="col-sm-12">
                         <button type="submit" className="btn btn-default">Submit</button>

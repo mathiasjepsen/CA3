@@ -16,8 +16,8 @@ public interface IUserFacade {
      */
     List<String> authenticateUser(String userName, String password);
     IUser getUserByUserId(String id);
-    IUser registerUser(User user, Role role) throws PasswordStorage.CannotPerformOperationException;
-    IUser registerAdmin(User admin, Role role) throws PasswordStorage.CannotPerformOperationException;
+    //IUser registerUser(User user, Role role) throws PasswordStorage.CannotPerformOperationException;
+    //IUser registerAdmin(User admin, Role role) throws PasswordStorage.CannotPerformOperationException;
     List<Place> getAllPlaces();
     
 }

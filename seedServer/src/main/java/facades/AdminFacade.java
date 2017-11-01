@@ -33,7 +33,6 @@ public class AdminFacade implements IAdminFacade {
         try {
             Query q = em.createQuery("SELECT u FROM USER u JOIN u.roles r WHERE r.roleName = 'User'");
             List<IUser> users = q.getResultList();
-            System.out.println("USers in query: " + users.toString());
             return users;
         } finally {
             em.close();
@@ -63,7 +62,6 @@ public class AdminFacade implements IAdminFacade {
             oldUser.setlName(editedUser.getlName());
             oldUser.setEmail(editedUser.getEmail());
             oldUser.setPhone(editedUser.getPhone());
-            oldUser.setRoles(editedUser.getRoles());
             em.getTransaction().commit();
             JSONUser newUser = new JSONUser(oldUser);
             return newUser;
@@ -71,22 +69,13 @@ public class AdminFacade implements IAdminFacade {
             em.close();
         }
     }
-    
+
     public IUser addUser(User user) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            String role = user.getRolesAsStrings().get(0);
-            switch (role) {
-                case "A":
-                    role = "Admin";
-                    break;
-                case "U":
-                    role = "User";
-                    break;
-            }
-            Role existingRole = em.find(Role.class, role);
             user.createPasswordHash(user.getPasswordHash());
+            Role existingRole = em.find(Role.class, "User");
             user.addRole(existingRole);
             existingRole.addUser(user);
             em.persist(user);
@@ -97,5 +86,3 @@ public class AdminFacade implements IAdminFacade {
         }
     }
 }
-
-

@@ -10,8 +10,7 @@ class EditUser extends Component {
             fName: "",
             lName: "",
             phone: "",
-            email: "",
-            roles: {}
+            email: ""
         }
     }
 
@@ -24,8 +23,7 @@ class EditUser extends Component {
             fName: user.fName,
             lName: user.lName,
             phone: user.phone,
-            email: user.email,
-            roles: user.roles
+            email: user.email
         })
     }
 
@@ -42,8 +40,7 @@ class EditUser extends Component {
             fName: this.state.fName,
             lName: this.state.lName,
             phone: this.state.phone,
-            email: this.state.email,
-            roles: this.state.roles
+            email: this.state.email
         }
 
         adminFacade.editUser(user)
@@ -84,10 +81,6 @@ class EditUser extends Component {
                             <input className="form-control" type="email" id="email" name="email" placeholder="Enter e-mail" value={this.state.email} onChange={this.onChange} />
                         </div>
                     </div>
-                    <select className="selectpicker" name="roles" onChange={this.onChange}>
-                        <option value="User">User</option>
-                        <option value="Admin">Admin</option>
-                    </select>
                     <div className="form-group">
                         <div className="col-sm-12">
                             <button type="submit" className="btn btn-default">Submit</button>
