@@ -53,37 +53,8 @@ class TopMenu extends Component {
                 </nav>
 
             </div>
-<<<<<<< HEAD
         )
     }
-=======
-            <ul className="nav navbar-nav">
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/places">Places</Link></li>
-              {this.state.isUser && (<li><Link to="/user">Page for Users </Link></li>)}
-              {this.state.isAdmin && (<li><Link to="/user">Page for admins </Link></li>)}
-            </ul>
-            <ul className="nav navbar-nav navbar-right">
-              <li className="navbar-text" style={{ color: "steelBlue" }}>{logInStatus}</li>
-              <li>
-                {this.state.loggedIn ?
-                  (
-                    <Link to="/logout"><span className="glyphicon glyphicon-log-in"></span> Logout</Link>
-                  ) :
-                  (
-                    <Link to="/login">
-                      <span className="glyphicon glyphicon-log-out"></span> Login </Link>
-                  )}
-                  {!this.state.loggedIn && (<Link to="/signup"> Sign-up </Link>)}
-              </li>
-            </ul>
-          </div>
-        </nav>
-        
-      </div>
-    )
-  }
->>>>>>> master
 }
 
 

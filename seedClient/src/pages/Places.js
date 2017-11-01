@@ -4,13 +4,22 @@ import userFacade from '../facades/userFacade'
 export default class Places extends React.Component {
     constructor() {
         super();
-        this.state = { places: [] }
+        this.state = {
+            places: []
+        }
     }
+
     componentDidMount() {
+        userFacade.setPlaceObserver(this.placesUpdater)
+        userFacade.fetchPlaces()
+    }
+
+    placesUpdater = (places) => {
         this.setState({
-          places: [userFacade.fetchPlaces()]
+            places
         })
     }
+
     render() {
         return (
             <div>
