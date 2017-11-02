@@ -1,5 +1,7 @@
 package rest.JSON;
 
+import entity.Role;
+import java.util.List;
 import security.IUser;
 
 /**
@@ -14,6 +16,7 @@ public class JSONUser {
     private String lName;
     private String phone;
     private String email;
+    private List<String> roles;
 
     public JSONUser(IUser user) {
         this.username = user.getUserName();
@@ -22,6 +25,7 @@ public class JSONUser {
         this.lName = user.getlName();
         this.phone = user.getPhone();
         this.email = user.getEmail();
+        this.roles = user.getRolesAsStrings();
     }
     
 }

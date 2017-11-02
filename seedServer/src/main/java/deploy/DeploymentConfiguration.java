@@ -1,11 +1,16 @@
 package deploy;
 
+import entity.Address;
+import entity.Place;
 import entity.Role;
 import entity.User;
 import facades.UserFacade;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 import java.util.logging.Level;
@@ -16,6 +21,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import security.PasswordStorage;
 import security.Secret;
 
 @WebListener
@@ -51,6 +57,7 @@ public class DeploymentConfiguration implements ServletContextListener {
 
 //  UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
 //
+
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();
@@ -106,8 +113,7 @@ public class DeploymentConfiguration implements ServletContextListener {
 //        } finally {
 //            em.close();
 //        }
-        
-  }
+    }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {

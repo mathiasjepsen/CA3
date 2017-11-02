@@ -1,11 +1,13 @@
 package facades;
 
+import entity.Place;
 import entity.Role;
 import security.IUserFacade;
 import entity.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.Response;
 import security.IUser;
@@ -32,13 +34,26 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
-    
+
     @Override
-    public IUser register(User user) throws PasswordStorage.CannotPerformOperationException {
+    public List<Place> getAllPlaces() {
         EntityManager em = getEntityManager();
         try {
-            user.createPasswordHash(user.getPasswordHash());
+            Query q = em.createQuery("SELECT p from PLACE p");
+            List<Place> places = q.getResultList();
+            return places;
+        } finally {
+            em.close();
+        }
+    }
+
+    public IUser registerUser(User user) throws PasswordStorage.CannotPerformOperationException {
+        EntityManager em = getEntityManager();
+        try {
             em.getTransaction().begin();
+            Role existingRole = em.find(Role.class, "User");
+            user.createPasswordHash(user.getPasswordHash());
+            user.addRole(existingRole);
             em.persist(user);
             em.getTransaction().commit();
             return user;
@@ -47,16 +62,16 @@ public class UserFacade implements IUserFacade {
         }
     }
 
-    @Override
-    public IUser addUserRole(String username, Role role) {
+    public IUser registerAdmin(User admin) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            User user = em.find(User.class, username);
-            user.addRole(role);
-            em.persist(user);
+            Role existingRole = em.find(Role.class, "Admin");
+            admin.createPasswordHash(admin.getPasswordHash());
+            admin.addRole(existingRole);
+            em.persist(admin);
             em.getTransaction().commit();
-            return user;
+            return admin;
         } finally {
             em.close();
         }
@@ -68,9 +83,9 @@ public class UserFacade implements IUserFacade {
     @Override
     public List<String> authenticateUser(String userName, String password) {
         try {
-            System.out.println("User Before:" + userName + ", " + password);
+            System.out.println("User before: " + userName + " " +password);
             IUser user = getUserByUserId(userName);
-            System.out.println("User After:" + user.getUserName() + ", " + user.getPasswordHash());
+            System.out.println("User after: " + userName + " " +user.getPasswordHash());
             return user != null && PasswordStorage.verifyPassword(password, user.getPasswordHash()) ? user.getRolesAsStrings() : null;
         } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
             throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);

@@ -5,6 +5,11 @@ class UserStore {
     constructor() {
         this._data = "";
         this._errorMessage = "";
+        this._places = ""
+    }
+
+    setPlaceObserver = (handler) => {
+        this._placeHandler = handler
     }
 
     getData = (cb) => {
@@ -37,14 +42,29 @@ class UserStore {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                userName: user.username,    
-                passwordHash: user.password,                
+                userName: user.username,
+                passwordHash: user.password,
                 fName: user.firstname,
                 lName: user.lastname,
                 phone: user.phone,
                 email: user.email
             })
         })
+    }
+
+    fetchPlaces = () => {
+        const options = fetchHelper.makeOptions("GET", true);
+        fetch(URL + 'api/all/places', options) 
+        .then((res) => {
+            return res.json()
+        })
+        .then((places) => {
+            this._places = places
+            if (this._placeHandler) {
+                this._placeHandler(places)
+            }
+        })
+           
     }
 }
 

@@ -6,7 +6,7 @@
   -->
     <context-param>
         <param-name>makeTestUser</param-name>
-        <param-value>true</param-value>
+        <param-value>false</param-value>
     </context-param>
     <servlet>
         <servlet-name>ServletAdaptor</servlet-name>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import userFacade from '../facades/userFacade'
-// import auth from "../authorization/auth"; should write our own signup, fetch with push
+ import auth from "../authorization/auth";
 
 class Signup extends Component {
     constructor() {
@@ -18,13 +18,13 @@ class Signup extends Component {
         const pass = this.state.user.password;
         userFacade.signUp(this.state.user);
 
-        // auth.login(user, pass, (err, loggedIn) => {
-        //   if (err) {
-        //     return this.setState({ err: err.errorMessage });
-        //   }
-        //   this.setState({ err: "" });
-        //   this.props.history.push("/");
-        // });
+        auth.login(userName, pass, (err, loggedIn) => {
+          if (err) {
+            return this.setState({ err: err.errorMessage });
+          }
+          this.setState({ err: "" });
+          this.props.history.push("/");
+        })
     }
 
     onChange = (e) => {
@@ -40,12 +40,12 @@ class Signup extends Component {
             <div className="container">
                 <form className="form-signin" onSubmit={this.handleSubmit}>
                     <h2 className="form-signin-heading">Register</h2>
+                    <label htmlFor="inputUserName" className="sr-only">User Name</label>
+                    <input type="text" value={this.state.user.username} onChange={this.onChange} className="form-control" id="username" placeholder="User Name" required autoFocus />
                     <label htmlFor="inputFirstName" className="sr-only">First Name</label>
                     <input type="text" value={this.state.user.firstname} onChange={this.onChange} className="form-control" id="firstname" placeholder="First Name" required autoFocus />
                     <label htmlFor="inputLasttName" className="sr-only">Last Name</label>
                     <input type="text" value={this.state.user.lastname} onChange={this.onChange} className="form-control" id="lastname" placeholder="Last Name" required autoFocus />
-                    <label htmlFor="inputUserName" className="sr-only">User Name</label>
-                    <input type="text" value={this.state.user.username} onChange={this.onChange} className="form-control" id="username" placeholder="User Name" required autoFocus />
                     <label htmlFor="inputEmail" className="sr-only">Email</label>
                     <input type="text" value={this.state.user.email} onChange={this.onChange} className="form-control" id="email" placeholder="Email" required autoFocus />
                     <label htmlFor="inputPhone" className="sr-only">Phone number</label>
