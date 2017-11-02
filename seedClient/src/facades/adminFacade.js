@@ -37,7 +37,9 @@ class AdminStore {
     getAllUsers = () => {
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + "api/admin/allUsers", options)
-            .then((res) => res.json())
+            .then((res) => {
+               return res.json()
+            })
             .then((users) => {
                 this._users = users
                 if (this._usersHandler) {
