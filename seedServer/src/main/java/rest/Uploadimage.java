@@ -30,7 +30,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
  *
  * @author thomasthimothee
  */
-@Path("uploadimage")
+@Path("upload")
 public class Uploadimage {
 
     @Context
