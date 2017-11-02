@@ -2,6 +2,7 @@ package rest;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 
 @javax.ws.rs.ApplicationPath("api")
@@ -10,6 +11,7 @@ public class ApplicationConfig extends Application {
   @Override
   public Set<Class<?>> getClasses() {
     Set<Class<?>> resources = new java.util.HashSet<>();
+    resources.add(MultiPartFeature.class);
     addRestResourceClasses(resources);
     return resources;
   }
@@ -27,11 +29,12 @@ public class ApplicationConfig extends Application {
     resources.add(httpErrors.NotFoundExceptionMapper.class);
     resources.add(rest.Admin.class);
     resources.add(rest.All.class);
+    resources.add(rest.Uploadimage.class);
     resources.add(rest.User.class);
     resources.add(security.JWTAuthenticationFilter.class);
     resources.add(security.Login.class);
     resources.add(security.NotAuthorizedExceptionMapper.class);
-    resources.add(security.RolesAllowedFilter.class);
+        resources.add(security.RolesAllowedFilter.class);
   }
   
 }
