@@ -61,7 +61,22 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
-
+public Place createLocation(Place place) {
+          EntityManager em = getEntityManager();
+          try  {
+              em.getTransaction().begin();
+              place.getAddress();
+              place.getDescription();
+              place.getImages();
+              em.persist(place);
+              em.getTransaction().commit();
+              return place;
+              
+              
+          }finally {
+              em.close();
+          }
+      }
     public IUser registerAdmin(User admin) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
