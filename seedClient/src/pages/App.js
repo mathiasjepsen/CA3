@@ -9,6 +9,7 @@ import TopMenu from "./TopMenu";
 import Signup from "./Signup";
 import AllUsers from './admin/AllUsers'
 import Places from "./Places";
+import Upload from "./Upload";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/allUsers" component={AllUsers} />        
         <Route path="/places" component={Places}/>
+        <Route path="/upload" component={Upload}/>
       </Switch>
     </div>
   )

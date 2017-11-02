@@ -12,7 +12,10 @@ export default class Places extends React.Component {
 
     componentDidMount() {
         userFacade.setPlaceObserver(this.placesUpdater)
+<<<<<<< HEAD
         placeFacade.setPlaceObserver(this.placesUpdater)
+=======
+>>>>>>> 0cfe88486569d473032dd0423fb7a181d8061ae7
         userFacade.fetchPlaces()
     }
 
@@ -22,6 +25,7 @@ export default class Places extends React.Component {
         })
     }
 
+<<<<<<< HEAD
     sortByRating = ()=>{
         placeFacade.sortByRating(this.state.places)
     }
@@ -34,6 +38,8 @@ export default class Places extends React.Component {
         placeFacade.sortByZip(this.state.places)
     }
 
+=======
+>>>>>>> 0cfe88486569d473032dd0423fb7a181d8061ae7
     render() {
         return (
             <div>
@@ -48,9 +54,12 @@ export default class Places extends React.Component {
                             <th>Location</th>
                             <th>Description</th>
                             <th>Rating</th>
+<<<<<<< HEAD
                             <th><button onClick={this.sortByRating}>Sort by rating</button></th>
                             <th><button onClick={this.sortByCity}>Sort by City</button></th>
                             <th><button onClick={this.sortByZip}>Sort by Zip</button></th>
+=======
+>>>>>>> 0cfe88486569d473032dd0423fb7a181d8061ae7
                         </tr>
                     </thead>
                     <tbody>
@@ -76,7 +85,12 @@ export default class Places extends React.Component {
                                         {place.description}
                                     </td>
                                     <td>
+<<<<<<< HEAD
                                         {place.rating}
+=======
+                                        rating goes here
+                                        {/*place.ratings*/}
+>>>>>>> 0cfe88486569d473032dd0423fb7a181d8061ae7
                                     </td>
 
                                 </tr>
