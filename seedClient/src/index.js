@@ -8,6 +8,6 @@ import App2 from "./pages/App2"
 
 ReactDOM.render((
   <HashRouter>
-    <App2/>
+    <App/>
   </HashRouter>
 ), document.getElementById('root'))
