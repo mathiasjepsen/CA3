@@ -6,7 +6,7 @@ class placeFacade {
     setPlaceObserver = (handler) => {
         this._handler = handler;
     }
-    
+
     setPlacesObserver = (handler) => {
         this._placeHandler = handler
     }
@@ -71,3 +71,4 @@ function compareZip(a, b) {
 let pf = new placeFacade();
 
 export default pf;
+

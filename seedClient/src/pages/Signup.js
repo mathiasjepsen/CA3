@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import userFacade from '../facades/userFacade'
-// import auth from "../authorization/auth"; should write our own signup, fetch with push
+ import auth from "../authorization/auth";
 
 class Signup extends Component {
     constructor() {
