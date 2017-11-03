@@ -86,13 +86,11 @@ class UserStore {
     }
 
     addRating = (place) => {
+        const options = fetchHelper.makeOptions("PUT", true);
         console.log("place in addRating", place)
         fetch(URL + 'api/user/rating', {
             method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
+            headers: options.headers,
             body: JSON.stringify({place})
         }
     // ). does it make sense to update state in Places component, since it is not what is rendered here. 
