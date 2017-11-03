@@ -1,7 +1,23 @@
 
-
+import fetchHelper, { errorChecker } from "./fetchHelpers"
+const URL = require("../../package.json").serverURL;
 
 class placeFacade {
+
+  createLocation = (place) => {
+    fetch(URL + 'api/all', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            description: place.description,
+            image: place.image,
+            address: place.address
+        })
+    })
+}
 
   setPlaceObserver = (handler) =>{
     this._handler = handler;

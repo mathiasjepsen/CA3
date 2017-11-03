@@ -54,7 +54,8 @@ class UserStore {
 
     fetchPlaces = () => {
         const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + 'api/all/places', options) 
+        const auth = fetchHelper.makeOptions("authenticate", true);
+        fetch(URL + 'api/all/places', options, auth) 
         .then((res) => {
             return res.json()
         })
