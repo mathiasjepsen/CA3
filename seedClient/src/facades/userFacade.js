@@ -86,7 +86,7 @@ class UserStore {
     }
 
     addRating = (place) => {
-        console.log("place in addRating")
+        console.log("place in addRating", place)
         fetch(URL + 'api/user/rating', {
             method: 'PUT',
             headers: {
@@ -94,17 +94,18 @@ class UserStore {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({place})
-        }).
-                then((res) => {
-                    return res.json()
-                })
-                .then((places) => {
-                    this._places = places
-                    if (this._placeHandler) {
-                        this._placeHandler(places)
-                    }
-                })
-    }
+        }
+    // ). does it make sense to update state in Places component, since it is not what is rendered here. 
+    //             then((res) => {
+    //                 return res.json()
+    //             })
+    //             .then((places) => {
+    //                 this._places = places
+    //                 if (this._placeHandler) {
+    //                     this._placeHandler(places)
+    //                 }
+    //             }
+    )}
 }
 
 let userStore = new UserStore();

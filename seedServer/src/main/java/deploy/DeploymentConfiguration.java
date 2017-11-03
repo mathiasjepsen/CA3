@@ -54,7 +54,7 @@ public class DeploymentConfiguration implements ServletContextListener {
     }
     ServletContext context = sce.getServletContext();
  
-//
+
 //  UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
 //
 //
@@ -67,12 +67,18 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            User user1 = new User("mathias", "1234", "Mathias", "Jepsen", "123325234", "mathias@wpsnet.com");
 //            User user2 = new User("thomas", "1234", "Thomas", "Thimothee", "23442635", "thomas@thom.com");
 //            User user3 = new User("Dimitri", "1234", "Dim", "Dimitri", "456789", "dim@dim.com");
+//            User user4 = new User("Mikael", "1234", "Mik", "Mak", "42421", "mik@mik.com");
+//            User user5 = new User("Martin", "1234", "Martin", "MartinLN", "435323", "martin@mail.com");
+//            User user6 = new User("lovro", "1234", "Lovro", "Louvrou", "424", "louv@dim.com");
 //            User admin = new User("admin", "1234");
 //            Role role = new Role("User");
 //            Role adminRole = new Role("Admin");
 //            user1.addRole(role);
 //            user2.addRole(role);
 //            user3.addRole(role);
+//            user4.addRole(role);
+//            user5.addRole(role);
+//            user6.addRole(role);
 //            admin.addRole(adminRole);
 //            HashMap<String, Double> rating = new HashMap();
 //            rating.put(user1.getUserName(), 2.0);
@@ -104,6 +110,9 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            em.persist(user1);
 //            em.persist(user2);
 //            em.persist(user3);
+//            em.persist(user4);
+//            em.persist(user5);
+//            em.persist(user6);
 //            em.persist(admin);
 //            em.persist(role);
 //            em.persist(adminRole);

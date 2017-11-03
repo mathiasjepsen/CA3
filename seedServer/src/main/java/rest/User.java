@@ -44,6 +44,7 @@ public class User {
     
     @PUT
     @Path("rate")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String addRate(String content) throws PasswordStorage.CannotPerformOperationException {
         JSONPlace place = uf.addRate(gson.fromJson(content, entity.Place.class));
