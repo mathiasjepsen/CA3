@@ -56,7 +56,6 @@ public String getJson() {
   public Response uploadFile(@DefaultValue("") @FormDataParam("user") String user,
           @FormDataParam("file") InputStream file,
           @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
-
     System.out.println("Just to show how to send additonal data: "+ user);
     String fileName = fileDisposition.getFileName();
     saveFile(file, fileName);

@@ -5,16 +5,16 @@ const URL = require("../../package.json").serverURL;
 class placeFacade {
 
   createLocation = (place) => {
-    fetch(URL + 'api/all', {
+ const options = fetchHelper.makeOptions("POST", true); 
+ console.log("place" + place)
+    fetch(URL + 'api/user/createlocation', {
         method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
+        headers: options.headers,
         body: JSON.stringify({
-            description: place.description,
-            image: place.image,
-            address: place.address
+              description: place.description,
+              image: place.image,
+              address: {city: place.address.city, zip:place.address.zip, street:place.address.street, location:place.address.location},
+              ratings: {"lovro": 3.0}
         })
     })
 }

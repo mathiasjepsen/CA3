@@ -1,5 +1,6 @@
 package facades;
 
+import entity.Address;
 import entity.Place;
 import entity.Role;
 import security.IUserFacade;
@@ -65,14 +66,10 @@ public Place createLocation(Place place) {
           EntityManager em = getEntityManager();
           try  {
               em.getTransaction().begin();
-              place.getAddress();
-              place.getDescription();
-              place.getImages();
+              em.persist(place.getAddress());
               em.persist(place);
               em.getTransaction().commit();
-              return place;
-              
-              
+              return place;    
           }finally {
               em.close();
           }

@@ -24,7 +24,7 @@ public class Place implements Serializable {
     @OneToOne
     private Address address;
 
-    public Place(Address address, String description, HashMap<String, Double> ratings, List<String> images) {
+    public Place(Address address, String description, HashMap<String, Double> ratings, String images) {
         this.address = address;
         this.description = description;
         this.ratings = ratings;
@@ -35,7 +35,7 @@ public class Place implements Serializable {
 
     private HashMap<String, Double> ratings;
 
-    private List<String> images;
+    private String images;
     
     public Place() {
         this.ratings = new HashMap();
@@ -61,8 +61,12 @@ public class Place implements Serializable {
         return ratings;
     }
 
-    public List<String> getImages() {
+    public String getImages() {
         return images;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 }

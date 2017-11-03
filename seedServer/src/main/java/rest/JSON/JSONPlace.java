@@ -19,7 +19,7 @@ public class JSONPlace {
 
     private Address address;
     private String description;
-    private List<String> images;
+    private String images;
     private HashMap<String, Double> ratings;
     private int rating;
 
@@ -49,7 +49,7 @@ public class JSONPlace {
         return description;
     }
 
-    public List<String> getImages() {
+    public String getImages() {
         return images;
     }
 

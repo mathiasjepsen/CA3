@@ -8,7 +8,6 @@ export default {
     makeOptions: function (method, authenticate, data) {
         let headers = {
             "Content-type": "Application/json",
-            'Access-Control-Allow-Origin': '*'
         };
         if (authenticate) {
             headers.Authorization = `Bearer ${sessionStorage.token}`;

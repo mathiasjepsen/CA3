@@ -54,7 +54,7 @@ public class DeploymentConfiguration implements ServletContextListener {
     }
     ServletContext context = sce.getServletContext();
  
-//
+
 //  UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
 //
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
@@ -77,23 +77,20 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            rating.put(user1.getUserName(), 2.0);
 //            rating.put(user2.getUserName(), 3.0);
 //            rating.put(user3.getUserName(), 4.0);
-//            List<String> images = new ArrayList();
-//            images.add("fwafwaw");
-//            Place place = new Place(address, "hfhw", rating, images);
+//            String image1 = "image1";
+//            String image2 = "image2";
+//            String image3 = "image3";
+//            Place place = new Place(address, "hfhw", rating, image1);
 //            HashMap<String, Double> rating2 = new HashMap();
 //            rating2.put(user1.getUserName(), 20.0);
 //            rating2.put(user2.getUserName(), 25.0);
 //            rating2.put(user3.getUserName(), 28.0);
-//            List<String> images2 = new ArrayList();
-//            images2.add("fwafwaw");
-//            Place place2 = new Place(address2, "hfhw", rating2, images2);
+//            Place place2 = new Place(address2, "hfhw", rating2, image2);
 //            HashMap<String, Double> rating3 = new HashMap();
 //            rating3.put(user1.getUserName(), 10.0);
 //            rating3.put(user2.getUserName(), 8.0);
 //            rating3.put(user3.getUserName(), 6.0);
-//            List<String> images3 = new ArrayList();
-//            images3.add("fwafwaw");
-//            Place place3 = new Place(address3, "hfhw", rating3, images3);
+//            Place place3 = new Place(address3, "hfhw", rating3, image3);
 //            em.persist(address);
 //            em.persist(address2);
 //            em.persist(address3);

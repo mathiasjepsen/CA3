@@ -24,10 +24,12 @@ public class User {
     public String getSomething() {
         return "{\"message\" : \"Hello User from Server (Accesible by only authenticated USERS)\"}";
     }
-@POST
+      @POST
+    @Path("createlocation")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String createLocation(String content) {
+          System.out.println("content:" + content);
         Place place = uf.createLocation(gson.fromJson(content, entity.Place.class));
         JSONPlace jsonPlace = new JSONPlace(place);
         return gson.toJson(jsonPlace);
