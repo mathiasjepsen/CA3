@@ -8,10 +8,6 @@ class UserStore {
         this._places = ""
     }
 
-    setPlaceObserver = (handler) => {
-        this._placeHandler = handler
-    }
-
     getData = (cb) => {
         this._errorMessage = "";
         this._messageFromServer = "";
@@ -50,21 +46,6 @@ class UserStore {
                 email: user.email
             })
         })
-    }
-
-    fetchPlaces = () => {
-        const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + 'api/all/places', options) 
-        .then((res) => {
-            return res.json()
-        })
-        .then((places) => {
-            this._places = places
-            if (this._placeHandler) {
-                this._placeHandler(places)
-            }
-        })
-           
     }
 }
 

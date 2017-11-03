@@ -11,9 +11,9 @@ export default class Places extends React.Component {
     }
 
     componentDidMount() {
-        userFacade.setPlaceObserver(this.placesUpdater)
         placeFacade.setPlaceObserver(this.placesUpdater)
-        userFacade.fetchPlaces()
+        placeFacade.setPlacesObserver(this.placesUpdater)
+        placeFacade.fetchPlaces()
     }
 
     placesUpdater = (places) => {
@@ -22,15 +22,15 @@ export default class Places extends React.Component {
         })
     }
 
-    sortByRating = ()=>{
+    sortByRating = () => {
         placeFacade.sortByRating(this.state.places)
     }
 
-    sortByCity = ()=>{
+    sortByCity = () => {
         placeFacade.sortByCity(this.state.places)
     }
 
-    sortByZip = ()=>{
+    sortByZip = () => {
         placeFacade.sortByZip(this.state.places)
     }
 
@@ -58,7 +58,7 @@ export default class Places extends React.Component {
                             return (
                                 <tr key={index}>
                                     <td>
-                                        {place.images}
+                                        <img src={place.image} style={{ width: 50, height: 50}} />
                                     </td>
                                     <td>
                                         {place.address.city}

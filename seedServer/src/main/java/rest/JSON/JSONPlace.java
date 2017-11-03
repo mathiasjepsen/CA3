@@ -7,9 +7,7 @@ package rest.JSON;
 
 import entity.Address;
 import entity.Place;
-import entity.User;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  *
@@ -17,16 +15,18 @@ import java.util.List;
  */
 public class JSONPlace {
 
+    private int id;
     private Address address;
     private String description;
-    private List<String> images;
+    private String image;
     private HashMap<String, Double> ratings;
     private int rating;
 
     public JSONPlace(Place place) {
+        this.id = place.getId();
         this.address = place.getAddress();
         this.description = place.getDescription();
-        this.images = place.getImages();
+        this.image = place.getImage();
         this.ratings = place.getRatings();
         this.rating = calculateRating();
     }
@@ -40,6 +40,10 @@ public class JSONPlace {
         }
         return sum / count;
     }
+    
+    public int getId() {
+        return id;
+    }
 
     public Address getAddress() {
         return address;
@@ -49,8 +53,8 @@ public class JSONPlace {
         return description;
     }
 
-    public List<String> getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
     public HashMap<String, Double> getRatings() {

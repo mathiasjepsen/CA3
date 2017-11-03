@@ -18,13 +18,13 @@ class Signup extends Component {
         const pass = this.state.user.password;
         userFacade.signUp(this.state.user);
 
-        auth.login(userName, pass, (err, loggedIn) => {
-          if (err) {
-            return this.setState({ err: err.errorMessage });
-          }
-          this.setState({ err: "" });
-          this.props.history.push("/");
-        })
+        // auth.login(user, pass, (err, loggedIn) => {
+        //   if (err) {
+        //     return this.setState({ err: err.errorMessage });
+        //   }
+        //   this.setState({ err: "" });
+        //   this.props.history.push("/");
+        // });
     }
 
     onChange = (e) => {
