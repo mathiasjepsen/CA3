@@ -18,6 +18,7 @@ import java.util.List;
 public class JSONPlace {
 
     private Address address;
+    private int id;
     private String description;
     private List<String> images;
     private HashMap<String, Double> ratings;
@@ -29,6 +30,7 @@ public class JSONPlace {
         this.images = place.getImages();
         this.ratings = place.getRatings();
         this.rating = calculateRating();
+        this.id = place.getId();
     }
 
     private int calculateRating() {

@@ -12,6 +12,10 @@ class UserStore {
         this._placeHandler = handler
     }
 
+    setRatingObserver = (handler) => {
+        this._ratingHandler = handler
+    }
+
     getData = (cb) => {
         this._errorMessage = "";
         this._messageFromServer = "";
@@ -54,17 +58,52 @@ class UserStore {
 
     fetchPlaces = () => {
         const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + 'api/all/places', options) 
-        .then((res) => {
-            return res.json()
-        })
-        .then((places) => {
-            this._places = places
-            if (this._placeHandler) {
-                this._placeHandler(places)
-            }
-        })
-           
+        fetch(URL + 'api/all/places', options)
+            .then((res) => {
+                return res.json()
+            })
+            .then((places) => {
+                this._places = places
+                if (this._placeHandler) {
+                    this._placeHandler(places)
+                }
+            })
+
+    }
+
+    fetchPlace = (id) => {
+        const options = fetchHelper.makeOptions("GET", true);
+        fetch(URL + 'api/user/' + id, options)
+            .then((res) => {
+                return res.json()
+            })
+            .then((place) => {
+                this._place = place
+                if (this._ratingHandler) {
+                    this._ratingHandler(place)
+                }
+            })
+    }
+
+    addRating = (place) => {
+        console.log("place in addRating")
+        fetch(URL + 'api/user/rating', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({place})
+        }).
+                then((res) => {
+                    return res.json()
+                })
+                .then((places) => {
+                    this._places = places
+                    if (this._placeHandler) {
+                        this._placeHandler(places)
+                    }
+                })
     }
 }
 

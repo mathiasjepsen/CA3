@@ -54,10 +54,10 @@ public class DeploymentConfiguration implements ServletContextListener {
     }
     ServletContext context = sce.getServletContext();
  
-
+//
 //  UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
 //
-
+//
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();

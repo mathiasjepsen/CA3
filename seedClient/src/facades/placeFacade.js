@@ -24,6 +24,7 @@ class placeFacade {
         let sortedArray = oldArray.sort(compareZip);
         this._handler(sortedArray);
       }
+
   }
   
   function compareRating(a,b) {

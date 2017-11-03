@@ -1,12 +1,16 @@
-import React, { Component } from 'react'
-import userFacade from '../facades/userFacade'
-import placeFacade from '../facades/placeFacade'
+import React, { Component } from 'react';
+import userFacade from '../facades/userFacade';
+import placeFacade from '../facades/placeFacade';
+import Rating from './Rating'
+import auth from '../authorization/auth'
+import { NavLink, Route } from 'react-router-dom';
 
 export default class Places extends React.Component {
     constructor() {
         super();
         this.state = {
-            places: []
+            places: [],
+            userName: auth.userName
         }
     }
 
@@ -33,6 +37,7 @@ export default class Places extends React.Component {
     sortByZip = ()=>{
         placeFacade.sortByZip(this.state.places)
     }
+
 
     render() {
         return (
@@ -78,18 +83,22 @@ export default class Places extends React.Component {
                                     <td>
                                         {place.rating}
                                     </td>
-
+                                    <td> {this.state.userName !== "" && 
+                                        <NavLink to={`/rate/${place.id}`}>rate this place</NavLink>
+                                    }
+                                    </td>
                                 </tr>
                             )
                         })}
-
                     </tbody>
                 </table>
-
             </div>
         )
     }
 }
+
+
+
 /*
 const PlaceDetails = (props) => {
 

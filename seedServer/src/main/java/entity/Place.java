@@ -65,4 +65,22 @@ public class Place implements Serializable {
         return images;
     }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setRatings(HashMap<String, Double> ratings) {
+        this.ratings = ratings;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+    
+    
+
 }
