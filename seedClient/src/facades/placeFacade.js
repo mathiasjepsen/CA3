@@ -1,22 +1,6 @@
 import fetchHelper, { errorChecker } from "./fetchHelpers"
 const URL = require("../../package.json").serverURL
 
-<<<<<<< HEAD
-import fetchHelper, { errorChecker } from "./fetchHelpers"
-const URL = require("../../package.json").serverURL;
-=======
-class placeFacade {
-
-    setPlaceObserver = (handler) => {
-        this._handler = handler;
-    }
->>>>>>> master
-
-    setPlacesObserver = (handler) => {
-        this._placeHandler = handler
-    }
-
-<<<<<<< HEAD
   createLocation = (place) => {
  const options = fetchHelper.makeOptions("POST", true); 
  console.log("place" + place)
@@ -43,15 +27,6 @@ class placeFacade {
       }
   
       sortByCity = (props) =>{
-=======
-    sortByRating = (props) => {
-        let oldArray = props;
-        let sortedArray = oldArray.sort(compareRating);
-        this._handler(sortedArray);
-    }
-
-    sortByCity = (props) => {
->>>>>>> master
         let oldArray = props;
         let sortedArray = oldArray.sort(compareCity);
         this._handler(sortedArray);
@@ -62,8 +37,6 @@ class placeFacade {
         let sortedArray = oldArray.sort(compareZip);
         this._handler(sortedArray);
       }
-
-  }
   
   function compareRating(a,b) {
       if (parseInt(a.rating) > parseInt(b.rating))

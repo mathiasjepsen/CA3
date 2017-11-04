@@ -10,11 +10,7 @@ import Signup from "./Signup";
 import Upload from "./Upload";
 import AllUsers from './admin/AllUsers'
 import Places from "./Places";
-<<<<<<< HEAD
 import CreateLocation from "./CreateLocation"
-=======
-import Rating from "./Rating"
->>>>>>> master
 
 
 function App() {
@@ -31,11 +27,7 @@ function App() {
         <Route path="/upload" component={Upload} />
         <Route path="/allUsers" component={AllUsers} />        
         <Route path="/places" component={Places}/>
-<<<<<<< HEAD
         <Route path="/createlocation" component={CreateLocation}/>
-=======
-        <Route path="/rate/:id" component={Rating}/>
->>>>>>> master
       </Switch>
     </div>
   )

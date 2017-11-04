@@ -59,7 +59,6 @@ class UserStore {
     fetchPlaces = () => {
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + 'api/all/places', options)
-<<<<<<< HEAD
         .then((res) => {
             return res.json()
         })
@@ -70,18 +69,6 @@ class UserStore {
             }
         })
            
-=======
-            .then((res) => {
-                return res.json()
-            })
-            .then((places) => {
-                this._places = places
-                if (this._placeHandler) {
-                    this._placeHandler(places)
-                }
-            })
-
->>>>>>> master
     }
 
     fetchPlace = (id) => {
