@@ -57,6 +57,7 @@ public class DeploymentConfiguration implements ServletContextListener {
 
 //  UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
 //
+
 //
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
@@ -122,6 +123,7 @@ public class DeploymentConfiguration implements ServletContextListener {
 //        } finally {
 //            em.close();
 //        }
+
     }
 
     @Override
