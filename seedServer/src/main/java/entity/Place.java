@@ -24,18 +24,16 @@ public class Place implements Serializable {
     @OneToOne
     private Address address;
 
-    public Place(Address address, String description, HashMap<String, Double> ratings, String images) {
+    public Place(Address address, String description, HashMap<String, Double> ratings, String image) {
         this.address = address;
         this.description = description;
         this.ratings = ratings;
-        this.images = images;
+        this.image = image;
     }
 
     private String description;
-
     private HashMap<String, Double> ratings;
-
-    private String images;
+    private String image;
     
     public Place() {
         this.ratings = new HashMap();
@@ -61,12 +59,24 @@ public class Place implements Serializable {
         return ratings;
     }
 
-    public String getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
     public void setAddress(Address address) {
         this.address = address;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setRatings(HashMap<String, Double> ratings) {
+        this.ratings = ratings;
+    }
+
+    public void setImages(String image) {
+        this.image = image;
+    }
+    
 }

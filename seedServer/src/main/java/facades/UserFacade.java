@@ -11,6 +11,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.Response;
+import rest.JSON.JSONPlace;
+import rest.JSON.JSONUser;
 import security.IUser;
 import security.PasswordStorage;
 
@@ -101,6 +103,33 @@ public Place createLocation(Place place) {
             return user != null && PasswordStorage.verifyPassword(password, user.getPasswordHash()) ? user.getRolesAsStrings() : null;
         } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
             throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);
+        }
+    }
+
+    public Place getPlace(Integer id) {
+         EntityManager em = getEntityManager();
+         System.out.println("id passed down"+ id);
+        try {
+            Query q = em.createQuery("SELECT p from PLACE p where p.id = :Id");
+            q.setParameter("Id", id);
+            Place place = (Place) q.getSingleResult();
+            return place;
+        } finally {
+            em.close();
+        }
+    }
+
+    public JSONPlace addRate(Place editedPlace) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Place oldPlace = em.find(Place.class, editedPlace.getId());
+            oldPlace.setRatings(editedPlace.getRatings());
+            em.getTransaction().commit();
+            JSONPlace newPlace = new JSONPlace(oldPlace);
+            return newPlace;
+        } finally {
+            em.close();
         }
     }
 

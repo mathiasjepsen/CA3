@@ -1,19 +1,23 @@
-import React, { Component } from 'react'
-import userFacade from '../facades/userFacade'
-import placeFacade from '../facades/placeFacade'
+import React, { Component } from 'react';
+import userFacade from '../facades/userFacade';
+import placeFacade from '../facades/placeFacade';
+import Rating from './Rating'
+import auth from '../authorization/auth'
+import { NavLink, Route } from 'react-router-dom';
 
 export default class Places extends React.Component {
     constructor() {
         super();
         this.state = {
-            places: []
+            places: [],
+            userName: auth.userName
         }
     }
 
     componentDidMount() {
-        userFacade.setPlaceObserver(this.placesUpdater)
         placeFacade.setPlaceObserver(this.placesUpdater)
         userFacade.fetchPlaces()
+        console.log("componentDid mount userName", this.state.userName)
     }
 
     placesUpdater = (places) => {
@@ -22,17 +26,18 @@ export default class Places extends React.Component {
         })
     }
 
-    sortByRating = ()=>{
+    sortByRating = () => {
         placeFacade.sortByRating(this.state.places)
     }
 
-    sortByCity = ()=>{
+    sortByCity = () => {
         placeFacade.sortByCity(this.state.places)
     }
 
-    sortByZip = ()=>{
+    sortByZip = () => {
         placeFacade.sortByZip(this.state.places)
     }
+
 
     render() {
         return (
@@ -55,10 +60,14 @@ export default class Places extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.places.map((place, index) => {
+                            var x = Object.keys(place.ratings);
+                            console.log("x in places ",x);
+                            var alreadyRated = x.indexOf(this.state.userName)
+                            console.log("index ", alreadyRated)
                             return (
                                 <tr key={index}>
                                     <td>
-                                        {place.images}
+                                        <img src={place.image} style={{ width: 50, height: 50}} />
                                     </td>
                                     <td>
                                         {place.address.city}
@@ -78,18 +87,22 @@ export default class Places extends React.Component {
                                     <td>
                                         {place.rating}
                                     </td>
-
+                                    <td> {this.state.userName !== "" && alreadyRated===-1 &&
+                                        <NavLink to={`/rate/${place.id}`}>rate this place</NavLink>
+                                    }
+                                    </td>
                                 </tr>
                             )
                         })}
-
                     </tbody>
                 </table>
-
             </div>
         )
     }
 }
+
+
+
 /*
 const PlaceDetails = (props) => {
 
