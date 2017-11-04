@@ -40,12 +40,12 @@ export default class Places extends Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+            <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0, marginTop: 0 }}>
                 <FlatList
                     data={this.state.places}
                     renderItem={({ item }) => {
                         return (
-                            <TouchableOpacity onPress={() => navigate('PlacesDetail', {id: item.id})}>
+                            <TouchableOpacity onPress={() => navigate('PlacesDetail', { place: item })}>
                                 <ListItem
                                     title={`${item.description}`}
                                     subtitle={`${item.address.city} - ${item.address.street}`}
@@ -56,7 +56,7 @@ export default class Places extends Component {
                         )
                     }}
                     ItemSeparatorComponent={this.renderSeparator}
-                    keyExtractor={item => item.id}                    
+                    keyExtractor={item => item.id}
                 />
             </List>
         )
