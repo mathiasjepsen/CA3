@@ -1,7 +1,9 @@
 import fetchHelper, { errorChecker } from "./fetchHelpers"
+import React from 'react';
 const URL = require("../../package.json").serverURL
 
-  createLocation = (place) => {
+class placeFacade extends React.Component{
+createLocation = (place) => {
  const options = fetchHelper.makeOptions("POST", true); 
  console.log("place" + place)
     fetch(URL + 'api/user/createlocation', {
@@ -37,7 +39,7 @@ const URL = require("../../package.json").serverURL
         let sortedArray = oldArray.sort(compareZip);
         this._handler(sortedArray);
       }
-  
+    } 
   function compareRating(a,b) {
       if (parseInt(a.rating) > parseInt(b.rating))
         return -1;
@@ -61,6 +63,7 @@ function compareZip(a, b) {
         return 1;
     return 0;
 }
+
 
 let pf = new placeFacade();
 
