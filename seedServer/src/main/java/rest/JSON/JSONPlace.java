@@ -29,6 +29,7 @@ public class JSONPlace {
         this.image = place.getImage();
         this.ratings = place.getRatings();
         this.rating = calculateRating();
+        this.id = place.getId();
     }
 
     private int calculateRating() {

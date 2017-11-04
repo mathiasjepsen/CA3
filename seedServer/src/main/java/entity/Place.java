@@ -32,9 +32,7 @@ public class Place implements Serializable {
     }
 
     private String description;
-
     private HashMap<String, Double> ratings;
-
     private String image;
     
     public Place() {
@@ -65,4 +63,20 @@ public class Place implements Serializable {
         return image;
     }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setRatings(HashMap<String, Double> ratings) {
+        this.ratings = ratings;
+    }
+
+    public void setImages(String image) {
+        this.image = image;
+    }
+    
 }

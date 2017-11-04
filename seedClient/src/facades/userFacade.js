@@ -8,6 +8,14 @@ class UserStore {
         this._places = ""
     }
 
+    setPlaceObserver = (handler) => {
+        this._placeHandler = handler
+    }
+
+    setRatingObserver = (handler) => {
+        this._ratingHandler = handler
+    }
+
     getData = (cb) => {
         this._errorMessage = "";
         this._messageFromServer = "";
@@ -47,6 +55,55 @@ class UserStore {
             })
         })
     }
+
+    fetchPlaces = () => {
+        const options = fetchHelper.makeOptions("GET", true);
+        fetch(URL + 'api/all/places', options)
+        .then((res) => {
+            return res.json()
+        })
+        .then((places) => {
+            this._places = places
+            if (this._placeHandler) {
+                this._placeHandler(places)
+            }
+        })
+           
+    }
+
+    fetchPlace = (id) => {
+        const options = fetchHelper.makeOptions("GET", true);
+        fetch(URL + 'api/user/' + id, options)
+            .then((res) => {
+                return res.json()
+            })
+            .then((place) => {
+                this._place = place
+                if (this._ratingHandler) {
+                    this._ratingHandler(place)
+                }
+            })
+    }
+
+    addRating = (place) => {
+        const options = fetchHelper.makeOptions("PUT", true,place);
+        console.log("place in addRating", place)
+        fetch(URL + 'api/user/rate', {
+            method: 'PUT',
+            headers: options.headers,
+            body: options.body
+        }
+    // ). does it make sense to update state in Places component, since it is not what is rendered here. 
+    //             then((res) => {
+    //                 return res.json()
+    //             })
+    //             .then((places) => {
+    //                 this._places = places
+    //                 if (this._placeHandler) {
+    //                     this._placeHandler(places)
+    //                 }
+    //             }
+    )}
 }
 
 let userStore = new UserStore();

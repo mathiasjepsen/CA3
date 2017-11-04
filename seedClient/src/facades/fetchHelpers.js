@@ -7,7 +7,7 @@ export default {
      */
     makeOptions: function (method, authenticate, data) {
         let headers = {
-            "Content-type": "Application/json"
+            "Content-type": "Application/json",
         };
         if (authenticate) {
             headers.Authorization = `Bearer ${sessionStorage.token}`;
