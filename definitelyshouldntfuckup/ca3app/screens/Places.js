@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
-import { List, ListItem } from 'react-native-elements'
+import { List, ListItem, ButtonGroup } from 'react-native-elements'
 import placeFacade from '../facades/placeFacade'
 import { StackNavigator } from 'react-navigation'
 import PlacesDetail from './PlacesDetail'
@@ -9,7 +9,8 @@ export default class Places extends Component {
     constructor(props) {
         super()
         this.state = {
-            places: []
+            places: [],
+            selectedIndex: 2
         }
     }
 
@@ -21,6 +22,12 @@ export default class Places extends Component {
     placesUpdater = (places) => {
         this.setState({
             places
+        })
+    }
+
+    updateIndex = (selectedIndex) => {
+        this.setState({
+            selectedIndex
         })
     }
 
@@ -39,26 +46,36 @@ export default class Places extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        const buttons = ['Rating', 'City', 'Zip']
+        const { selectedIndex } = this.state
         return (
-            <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0, marginTop: 0 }}>
-                <FlatList
-                    data={this.state.places}
-                    renderItem={({ item }) => {
-                        return (
-                            <TouchableOpacity onPress={() => navigate('PlacesDetail', { place: item })}>
-                                <ListItem
-                                    title={`${item.description}`}
-                                    subtitle={`${item.address.city} - ${item.address.street}`}
-                                    avatar={{ uri: "https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A" }}
-                                    containerStyle={{ borderBottomWidth: 0 }}
-                                />
-                            </TouchableOpacity>
-                        )
-                    }}
-                    ItemSeparatorComponent={this.renderSeparator}
-                    keyExtractor={item => item.id}
+            <View>
+                <ButtonGroup
+                    onPress={this.updateIndex}
+                    selectedIndex={selectedIndex}
+                    buttons={buttons}
+                    containerStyle={{ height: 30 }}
                 />
-            </List>
+                <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0, marginTop: 0 }}>
+                    <FlatList
+                        data={this.state.places}
+                        renderItem={({ item }) => {
+                            return (
+                                <TouchableOpacity onPress={() => navigate('PlacesDetail', { place: item })}>
+                                    <ListItem
+                                        title={`${item.description}`}
+                                        subtitle={`${item.address.city} - ${item.address.street}`}
+                                        avatar={{ uri: "https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A" }}
+                                        containerStyle={{ borderBottomWidth: 0 }}
+                                    />
+                                </TouchableOpacity>
+                            )
+                        }}
+                        ItemSeparatorComponent={this.renderSeparator}
+                        keyExtractor={item => item.id}
+                    />
+                </List>
+            </View>
         )
     }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
-import { List, ListItem, Avatar, Rating } from 'react-native-elements'
+import { List, ListItem, Avatar, Rating, Tile } from 'react-native-elements'
 import { StackNavigator } from 'react-navigation'
 
 
@@ -17,11 +17,9 @@ export default class PlacesDetail extends Component {
         let rating = this.state.place.rating;
         return (
             <View style={styles.container}>
-                <Avatar
-                    xlarge
-                    source={{ uri: `${place.image}` }}
-                    onPress={() => console.log("Works!")}
-                    activeOpacity={0.7}
+                <Tile
+                    imageSrc={{ uri: `${place.image}` }}
+                    featured
                 />
                 <Text>{`City: ${place.address.city}`}</Text>
                 <Text>{`Street: ${place.address.street}`}</Text>
@@ -43,9 +41,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        paddingTop: 22
     },
     text: {
-        
+
     }
 })
