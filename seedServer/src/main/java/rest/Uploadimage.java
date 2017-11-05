@@ -48,7 +48,7 @@ public String getJson() {
     return "[]";
 }
    //IMPORTANT: Replace with a unix path when uploading to Droplet and set permissions on the folder
-  public static final String FILE_LOCATION = "/Users/thomasthimothee/Documents/AP Degree Class/Semester 3/Week 8 - React and react Native/ngrok exercise/img/";
+  public static final String FILE_LOCATION = "C:\\Users\\Lovro\\Desktop\\img\\";
   
   @Path("file")
   @POST
