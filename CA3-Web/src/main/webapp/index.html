@@ -69,20 +69,167 @@
                     <p>On the backend part of the project, 
                         we have created all the REST endpoints which are then used to fetch data from the client. The endpoints are as they follow:
                         1)/all - endpoint /places which fetches all the locations with their image, description, address and rating respectively.
-                               - here, people also create their user accounts by simply inputing information in the fields. All the data is then saved in the database through POST method.
+                        - here, people also create their user accounts by simply inputing information in the fields. All the data is then saved in the database through POST method.
                         2)/user - endpoint /createlocation where registered users can create a new location with a new image, description and address
-                                - endpoint /id which allows a user to search for a specific place given its id
-                                - endpoint /rate where user can rate a location
+                        - endpoint /id which allows a user to search for a specific place given its id
+                        - endpoint /rate where user can rate a location
                         Moreover, we created 4 entity classes respectively: Address, Place, Role and User. 
                         Those 4 entities represent our connection to the database. When we execute the server,
                         our persistence.xml will hook up to the database and create all the data which we have preset in DeploymentConfiguration class.
                     </p>
                     <br>
                     <h1>The Web-client</h1>
-                    <p>.</p>
+                    <p></p>
                     <br>
                     <h1>The App-Client</h1>
-                   
+                    <p></p>
+                    <br>
+                    <h1>User Stories</h1>
+
+                    <table style="width:100%">
+                        <tr>
+                            <th></th>
+                            <th>Time Estimate</th> 
+                            <th>Priority</th>
+                            <th>Likelyhood of Implementation</th>
+                        </tr>
+                        <tr>
+                            <td>User is able to edit the location and all its properties
+                            </td>
+                            <td> 5-7 hours
+                            </td>
+                            <td>8/10
+                            </td>
+                            <td>Likely to be made
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>User is able to edit his account information
+                            </td>
+                            <td>5-7 hours</td>
+                            <td>10/10
+                            </td>
+                            <td>Very likely to be made
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>User is able to change his rating for a certain location and is able to leave a small feedback on the said location
+                            </td>
+                            <td> 10-15hours
+                            </td>
+                            <td>5/10
+                            </td>
+                            <td>Uncertain
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>User is able to add more than one photo per location
+                            </td>
+                            <td> 10 hours
+                            </td>
+                            <td>7/10
+                            </td>
+                            <td>Likely to be made
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                User is able to delete the location and all its properties
+                            </td>
+                            <td> 5-7 hours
+                            </td>
+                            <td>7/10
+                            </td>
+                            <td>Likely to be made
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Admin is able to edit/delete user
+                            </td>
+                            <td> 10-15 hours
+                            </td>
+                            <td>6/10
+                            </td>
+                            <td>Uncertain
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Admin is able to review the posts from other users and can choose to either accept them or reject them
+                            </td>
+                            <td> 20-25 hours
+                            </td>
+                            <td>3/10
+                            </td>
+                            <td>Unlikely
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Implementing chat service where users can talk to admins to find out more about each location
+                            </td>
+                            <td> >30 hours
+                            </td>
+                            <td>2/10
+                            </td>
+                            <td>Unlikely
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Implementing a map where the location can be located by its GPS coordinates
+                            </td>
+                            <td> >30 hours
+                            </td>
+                            <td>2/10
+                            </td>
+                            <td>Unlikely
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                As a user i would like to see availability of a selected place so that i can see if i can book it
+                            </td>
+                            <td> 10 hours
+                            <td> 8/10
+                            </td>
+                            <td>Likely
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                As a user i would like to be able to book a place for a week
+                            </td>
+                            <td> 15-20 hours
+                            <td> 6/10
+                            </td>
+                            <td>Uncertain
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                As an admin i would like to see the booking of a selected place
+                            </td>
+                            <td> 10-15 hours
+                            <td> 6/10
+                            </td>
+                            <td>Uncertain
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                As an admin i would like to see all booking for a selected period
+                            </td>
+                            <td> 15-17 hours
+                            <td> 6/10
+                            </td>
+                            <td>Uncertain
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
                 </div>
             </div>
         </div>
