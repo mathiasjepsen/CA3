@@ -64,18 +64,20 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
-public Place createLocation(Place place) {
-          EntityManager em = getEntityManager();
-          try  {
-              em.getTransaction().begin();
-              em.persist(place.getAddress());
-              em.persist(place);
-              em.getTransaction().commit();
-              return place;    
-          }finally {
-              em.close();
-          }
-      }
+
+    public Place createLocation(Place place) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(place.getAddress());
+            em.persist(place);
+            em.getTransaction().commit();
+            return place;
+        } finally {
+            em.close();
+        }
+    }
+
     public IUser registerAdmin(User admin) throws PasswordStorage.CannotPerformOperationException {
         EntityManager em = getEntityManager();
         try {
@@ -97,9 +99,9 @@ public Place createLocation(Place place) {
     @Override
     public List<String> authenticateUser(String userName, String password) {
         try {
-            System.out.println("User before: " + userName + " " +password);
+            System.out.println("User before: " + userName + " " + password);
             IUser user = getUserByUserId(userName);
-            System.out.println("User after: " + userName + " " +user.getPasswordHash());
+            System.out.println("User after: " + userName + " " + user.getPasswordHash());
             return user != null && PasswordStorage.verifyPassword(password, user.getPasswordHash()) ? user.getRolesAsStrings() : null;
         } catch (PasswordStorage.CannotPerformOperationException | PasswordStorage.InvalidHashException ex) {
             throw new NotAuthorizedException("Invalid username or password", Response.Status.FORBIDDEN);
@@ -107,8 +109,8 @@ public Place createLocation(Place place) {
     }
 
     public Place getPlace(Integer id) {
-         EntityManager em = getEntityManager();
-         System.out.println("id passed down"+ id);
+        EntityManager em = getEntityManager();
+        System.out.println("id passed down" + id);
         try {
             Query q = em.createQuery("SELECT p from PLACE p where p.id = :Id");
             q.setParameter("Id", id);

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import auth from '../authorization/auth'
 
 class TopMenu extends Component {
-
     constructor(props) {
         super(props);
         this.state = { loggedIn: auth.loggedIn, userName: auth.userName, isUser: false, isAdmin: false }
@@ -18,9 +17,7 @@ class TopMenu extends Component {
     }
 
     render() {
-
         const logInStatus = this.state.loggedIn ? "Logged in as: " + this.state.userName : "";
-        //console.log("RENDERING - REMOVE ME",JSON.stringify(this.state));
         return (
             <div>
                 <nav className="navbar navbar-default" >
@@ -31,10 +28,9 @@ class TopMenu extends Component {
                         <ul className="nav navbar-nav">
                             <li><Link to="/about">About</Link></li>
                             <li><Link to="/places">See Places</Link></li>
-                            <li><Link to="/upload">upload image</Link></li>
                             {this.state.isAdmin && (<li><Link to="/admin">Page for Admins</Link></li>)}
                             {this.state.isAdmin && (<li><Link to="/allUsers">All Users</Link></li>)}
-                            {this.state.isUser && (<li><Link to="/createlocation">Create New Location</Link></li>)}
+                            {this.state.isUser && (<li><Link to="/createlocation">Create New Place</Link></li>)}
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
                             <li className="navbar-text" style={{ color: "steelBlue" }}>{logInStatus}</li>

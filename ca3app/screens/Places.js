@@ -22,13 +22,24 @@ export default class Places extends Component {
     placesUpdater = (places) => {
         this.setState({
             places
-        })
+        }) 
     }
 
     updateIndex = (selectedIndex) => {
         this.setState({
             selectedIndex
         })
+        switch (selectedIndex) {
+            case 0:
+                this.placesUpdater(placeFacade.sortByRating(this.state.places))
+                break
+            case 1:
+                this.placesUpdater(placeFacade.sortByCity(this.state.places))
+                break
+            case 2:
+                this.placesUpdater(placeFacade.sortByZip(this.state.places))
+                break
+        }  
     }
 
     renderSeparator = () => {
@@ -48,6 +59,7 @@ export default class Places extends Component {
         const { navigate } = this.props.navigation;
         const buttons = ['Rating', 'City', 'Zip']
         const { selectedIndex } = this.state
+        console.log("Rendering again")
         return (
             <View>
                 <ButtonGroup
@@ -59,7 +71,9 @@ export default class Places extends Component {
                 <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0, marginTop: 0 }}>
                     <FlatList
                         data={this.state.places}
+                        extraData={this.state}
                         renderItem={({ item }) => {
+                            console.log("Item rating", item.rating)
                             return (
                                 <TouchableOpacity onPress={() => navigate('PlacesDetail', { place: item })}>
                                     <ListItem

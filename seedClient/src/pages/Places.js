@@ -16,8 +16,8 @@ export default class Places extends React.Component {
 
     componentDidMount() {
         placeFacade.setPlaceObserver(this.placesUpdater)
+        userFacade.setPlaceObserver(this.placesUpdater)
         userFacade.fetchPlaces()
-        console.log("componentDid mount userName", this.state.userName)
     }
 
     placesUpdater = (places) => {
@@ -61,9 +61,7 @@ export default class Places extends React.Component {
                     <tbody>
                         {this.state.places.map((place, index) => {
                             var x = Object.keys(place.ratings);
-                            console.log("x in places ",x);
                             var alreadyRated = x.indexOf(this.state.userName)
-                            console.log("index ", alreadyRated)
                             return (
                                 <tr key={index}>
                                     <td>

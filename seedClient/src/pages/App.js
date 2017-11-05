@@ -7,7 +7,6 @@ import UserPage from "./UserPage";
 import AdminPage from "./AdminPage";
 import TopMenu from "./TopMenu";
 import Signup from "./Signup";
-import Upload from "./Upload";
 import AllUsers from './admin/AllUsers'
 import Places from "./Places";
 import CreateLocation from "./CreateLocation"
@@ -24,7 +23,6 @@ function App() {
         <Route path="/user" component={UserPage} />
         <Route path="/admin" component={AdminPage} />
         <Route path="/signup" component={Signup} />
-        <Route path="/upload" component={Upload} />
         <Route path="/allUsers" component={AllUsers} />        
         <Route path="/places" component={Places}/>
         <Route path="/createlocation" component={CreateLocation}/>

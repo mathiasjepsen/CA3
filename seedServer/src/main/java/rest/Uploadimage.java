@@ -24,7 +24,6 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
-
 /**
  * REST Web Service
  *
@@ -43,34 +42,33 @@ public class Uploadimage {
     }
 
     @GET
-@Produces (MediaType.APPLICATION_JSON)
-public String getJson() {
-    return "[]";
-}
-   //IMPORTANT: Replace with a unix path when uploading to Droplet and set permissions on the folder
-  public static final String FILE_LOCATION = "/Users/thomasthimothee/Documents/AP Degree Class/Semester 3/Week 8 - React and react Native/ngrok exercise/img/";
-  
-  @Path("file")
-  @POST
-  @Consumes(MediaType.MULTIPART_FORM_DATA)
-  public Response uploadFile(@DefaultValue("") @FormDataParam("user") String user,
-          @FormDataParam("file") InputStream file,
-          @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
-    System.out.println("Just to show how to send additonal data: "+ user);
-    String fileName = fileDisposition.getFileName();
-    saveFile(file, fileName);
-    String status = "{\"status\":\"uploaded\"}";
-    return Response.ok(status).build();
-  }
-
-  private void saveFile(InputStream is, String fileLocation) throws IOException {
-    String location = FILE_LOCATION + fileLocation;
-    try (OutputStream os = new FileOutputStream(new File(location))) {
-      byte[] buffer = new byte[256];
-      int bytes = 0;
-      while ((bytes = is.read(buffer)) != -1) {
-        os.write(buffer, 0, bytes);
-      }
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJson() {
+        return "[]";
     }
-  }
+    //IMPORTANT: Replace with a unix path when uploading to Droplet and set permissions on the folder
+    public static final String FILE_LOCATION = "/Users/mathiasjepsen/Desktop/";
+
+    @Path("file")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadFile(@DefaultValue("") @FormDataParam("placeId") String placeId,
+            @FormDataParam("file") InputStream file,
+            @FormDataParam("file") FormDataContentDisposition fileDisposition) throws IOException {
+        String fileName = fileDisposition.getFileName();
+        saveFile(file, fileName);
+        String status = "{\"status\":\"uploaded\"}";
+        return Response.ok(status).build();
+    }
+
+    private void saveFile(InputStream is, String fileLocation) throws IOException {
+        String location = FILE_LOCATION + fileLocation;
+        try (OutputStream os = new FileOutputStream(new File(location))) {
+            byte[] buffer = new byte[256];
+            int bytes = 0;
+            while ((bytes = is.read(buffer)) != -1) {
+                os.write(buffer, 0, bytes);
+            }
+        }
+    }
 }

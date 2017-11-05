@@ -57,7 +57,7 @@ public class DeploymentConfiguration implements ServletContextListener {
 
 //  UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
 //
-
+//
 //
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
@@ -85,9 +85,9 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            rating.put(user1.getUserName(), 2.0);
 //            rating.put(user2.getUserName(), 3.0);
 //            rating.put(user3.getUserName(), 4.0);
-//            String image1 = "image1";
-//            String image2 = "image2";
-//            String image3 = "image3";
+//            String image1 = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A";
+//            String image2 = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A";
+//            String image3 = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A";
 //            Place place = new Place(address, "hfhw", rating, image1);
 //            HashMap<String, Double> rating2 = new HashMap();
 //            rating2.put(user1.getUserName(), 20.0);
@@ -119,9 +119,9 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
 //        } finally {
 //            em.close();
-//   }
-  }
 //        }
+  }
+       
 
 
     @Override
