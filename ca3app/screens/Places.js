@@ -59,7 +59,6 @@ export default class Places extends Component {
         const { navigate } = this.props.navigation;
         const buttons = ['Rating', 'City', 'Zip']
         const { selectedIndex } = this.state
-        console.log("Rendering again")
         return (
             <View>
                 <ButtonGroup
@@ -73,7 +72,6 @@ export default class Places extends Component {
                         data={this.state.places}
                         extraData={this.state}
                         renderItem={({ item }) => {
-                            console.log("Item rating", item.rating)
                             return (
                                 <TouchableOpacity onPress={() => navigate('PlacesDetail', { place: item })}>
                                     <ListItem

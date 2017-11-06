@@ -53,23 +53,18 @@ public class DeploymentConfiguration implements ServletContextListener {
       Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
     }
     ServletContext context = sce.getServletContext();
- 
 
-//  UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
-//
-//
-//
 //        EntityManager em = Persistence.createEntityManagerFactory("pu_development").createEntityManager();
 //        try {
 //            em.getTransaction().begin();
-//            Address address = new Address("London", "2000", "first avenue", "124312");
-//            Address address2 = new Address("Paris", "3000", "second avenue", "42142");
-//            Address address3 = new Address("Copenhagen", "4000", "third avenue", "12412");
+//            Address address = new Address("London", "2000", "First Avenue", "124312");
+//            Address address2 = new Address("Paris", "3000", "Second Boulevard", "42142");
+//            Address address3 = new Address("Copenhagen", "4000", "Third Quadrant", "12412");
 //            User user1 = new User("mathias", "1234", "Mathias", "Jepsen", "123325234", "mathias@wpsnet.com");
 //            User user2 = new User("thomas", "1234", "Thomas", "Thimothee", "23442635", "thomas@thom.com");
-//            User user3 = new User("Dimitri", "1234", "Dim", "Dimitri", "456789", "dim@dim.com");
-//            User user4 = new User("Mikael", "1234", "Mik", "Mak", "42421", "mik@mik.com");
-//            User user5 = new User("Martin", "1234", "Martin", "MartinLN", "435323", "martin@mail.com");
+//            User user3 = new User("dimitri", "1234", "Dim", "Dimitri", "456789", "dim@dim.com");
+//            User user4 = new User("mikael", "1234", "Mik", "Mak", "42421", "mik@mik.com");
+//            User user5 = new User("martin", "1234", "Martin", "Lannister", "435323", "martin@mail.com");
 //            User user6 = new User("lovro", "1234", "Lovro", "Louvrou", "424", "louv@dim.com");
 //            User admin = new User("admin", "1234");
 //            Role role = new Role("User");
@@ -88,17 +83,17 @@ public class DeploymentConfiguration implements ServletContextListener {
 //            String image1 = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A";
 //            String image2 = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A";
 //            String image3 = "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A";
-//            Place place = new Place(address, "hfhw", rating, image1);
+//            Place place = new Place(address, "A stroll down memory lane", rating, image1);
 //            HashMap<String, Double> rating2 = new HashMap();
-//            rating2.put(user1.getUserName(), 20.0);
-//            rating2.put(user2.getUserName(), 25.0);
-//            rating2.put(user3.getUserName(), 28.0);
-//            Place place2 = new Place(address2, "hfhw", rating2, image2);
+//            rating2.put(user1.getUserName(), 5.0);
+//            rating2.put(user2.getUserName(), 4.0);
+//            rating2.put(user3.getUserName(), 4.0);
+//            Place place2 = new Place(address2, "A breath of fresh air", rating2, image2);
 //            HashMap<String, Double> rating3 = new HashMap();
-//            rating3.put(user1.getUserName(), 10.0);
-//            rating3.put(user2.getUserName(), 8.0);
-//            rating3.put(user3.getUserName(), 6.0);
-//            Place place3 = new Place(address3, "hfhw", rating3, image3);
+//            rating3.put(user1.getUserName(), 1.0);
+//            rating3.put(user2.getUserName(), 2.0);
+//            rating3.put(user3.getUserName(), 3.0);
+//            Place place3 = new Place(address3, "Once in a lifetime experience", rating3, image3);
 //            em.persist(address);
 //            em.persist(address2);
 //            em.persist(address3);

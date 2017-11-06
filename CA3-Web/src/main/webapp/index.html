@@ -53,6 +53,8 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="https://github.com/mathiasjepsen/CA3">Git Repository</a></li>
+                        <li><a href="https://mathiasjepsen.dk">Web Client</a></li>
+                        <li><a href="https://expo.io/@mathiasjepsen/ca3app">React Native app</a></li>
                     </ul>
                 </div>
             </div>
@@ -67,31 +69,50 @@
                     <br>
                     <h1>The Backend</h1>
                     <p>On the backend part of the project, 
-                        we have created all the REST endpoints which are then used to fetch data from the client. The endpoints are as they follow:
+                        we have created all the REST endpoints which are then used to fetch data from the database. The endpoints are follows:
                         1)/all - endpoint /places which fetches all the locations with their image, description, address and rating respectively.
                         - here, people also create their user accounts by simply inputing information in the fields. All the data is then saved in the database through POST method.
                         2)/user - endpoint /createlocation where registered users can create a new location with a new image, description and address
                         - endpoint /id which allows a user to search for a specific place given its id
-                        - endpoint /rate where user can rate a location
+                        - endpoint /rate where user can rate a location.
                         Moreover, we created 4 entity classes respectively: Address, Place, Role and User. 
                         Those 4 entities represent our connection to the database. When we execute the server,
                         our persistence.xml will hook up to the database and create all the data which we have preset in DeploymentConfiguration class.
                     </p>
                     <br>
                     <h1>The Web-client</h1>
-                    <p></p>
+                    <p>Features currently implemented:</p>
+                    <ul>
+                        <li>Users can register and login.</li>
+                        <li>Admins can add new users and delete/edit existing ones.</li>
+                        <li>All non-authenticated users can see a table containing all the Place objects.</li>
+                        <li>The data in the table of Place objects can be sorted by rating, zip and city.</li>
+                        <li>Registered users can create a new Place and also rate it.</li>
+                    </ul>
+                    <p>Non-functioning features:</p>
+                    <ul>
+                        <li>Currently the selected image for a new Place object does not get saved anywhere,
+                        but ideally they would be saved in a folder on Tomcat and then accessed via a context path
+                        defined in Tomcat's server.xml file.</li>
+                    </ul>
                     <br>
                     <h1>The App-Client</h1>
+                    <p>Features currently implemented:</p>
+                    <ul>
+                        <li>Users can see a list of all the Place objects.</li>
+                        <li>Users are able to click on any of the Place objects and be shown additional information.</li>
+                        <li>The list of Place objects can be sorted by city, zip and rating.</li>
+                    </ul>
                     <p></p>
                     <br>
                     <h1>User Stories</h1>
 
-                    <table style="width:100%">
+                    <table style="width:100%" class="table">
                         <tr>
                             <th></th>
                             <th>Time Estimate</th> 
                             <th>Priority</th>
-                            <th>Likelyhood of Implementation</th>
+                            <th>Likelihood of Implementation</th>
                         </tr>
                         <tr>
                             <td>As a user I would like to be able to edit the location and all its properties
@@ -229,6 +250,13 @@
                             </td>
                         </tr>
                     </table>
+                    <h1>Who Did What</h1>
+                    <ul>
+                        <li><p>Lovro: Places.js, CreateLocation.js and the features for uploading a picture</p></li>
+                        <li><p>Thomas: Sorting methods for places, user ratings and Signup.js</p></li>
+                        <li><p>Mathias: Admin page, see all users, React Native app</p></li>
+                        <li><p>Dimitris: General work on the REST endpoints</p></li>
+                    </ul>
                     <br>
                 </div>
             </div>

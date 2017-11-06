@@ -46,7 +46,7 @@ public class Uploadimage {
         return "[]";
     }
     //IMPORTANT: Replace with a unix path when uploading to Droplet and set permissions on the folder
-    public static final String FILE_LOCATION = "/Users/mathiasjepsen/Desktop/";
+    public static final String FILE_LOCATION = "https://mathiasjepsen.dk/backend/ca3/images/";
 
     @Path("file")
     @POST

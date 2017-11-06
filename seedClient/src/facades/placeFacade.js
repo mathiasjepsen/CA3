@@ -36,9 +36,6 @@ class placeFacade extends React.Component {
         })
     }
 
-
-
-
     setPlaceObserver = (handler) => {
         this._handler = handler;
     }
