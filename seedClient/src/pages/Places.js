@@ -65,7 +65,7 @@ export default class Places extends React.Component {
                             return (
                                 <tr key={index}>
                                     <td>
-                                        <img src={place.image} style={{ width: 50, height: 50}} />
+                                        <img src={`https://mathiasjepsen.dk/backend/ca3/images/${place.image}`} style={{ width: 50, height: 50}} />
                                     </td>
                                     <td>
                                         {place.address.city}

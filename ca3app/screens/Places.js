@@ -77,7 +77,7 @@ export default class Places extends Component {
                                     <ListItem
                                         title={`${item.description}`}
                                         subtitle={`${item.address.city} - ${item.address.street}`}
-                                        avatar={{ uri: "https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/20294416_1695690513792031_5913082279411205996_n.jpg?oh=1fb3d32cade5e09fd246d395b402b0d2&oe=5A67376A" }}
+                                        avatar={{ uri: `https://mathiasjepsen.dk/backend/ca3/images/${item.image}` }}
                                         containerStyle={{ borderBottomWidth: 0 }}
                                     />
                                 </TouchableOpacity>
